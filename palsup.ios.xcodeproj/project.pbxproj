@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824922F4D68500888B4C /* AppDelegate.swift */; };
+		2537824C22F4D68500888B4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824B22F4D68500888B4C /* ViewController.swift */; };
+		2537824F22F4D68500888B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537824D22F4D68500888B4C /* Main.storyboard */; };
+		2537825222F4D68500888B4C /* palsup_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2537825022F4D68500888B4C /* palsup_ios.xcdatamodeld */; };
+		2537825422F4D68600888B4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2537825322F4D68600888B4C /* Assets.xcassets */; };
+		2537825722F4D68600888B4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537825522F4D68600888B4C /* LaunchScreen.storyboard */; };
+		2537826222F4D68600888B4C /* palsup_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537826122F4D68600888B4C /* palsup_iosTests.swift */; };
+		2537826D22F4D68700888B4C /* palsup_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537826C22F4D68700888B4C /* palsup_iosUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2537825E22F4D68600888B4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2537823E22F4D68500888B4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2537824522F4D68500888B4C;
+			remoteInfo = palsup.ios;
+		};
+		2537826922F4D68700888B4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2537823E22F4D68500888B4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2537824522F4D68500888B4C;
+			remoteInfo = palsup.ios;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2537824622F4D68500888B4C /* palsup.ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palsup.ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2537824922F4D68500888B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2537824B22F4D68500888B4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2537824E22F4D68500888B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2537825122F4D68500888B4C /* palsup_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = palsup_ios.xcdatamodel; sourceTree = "<group>"; };
+		2537825322F4D68600888B4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2537825622F4D68600888B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2537825822F4D68600888B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2537825D22F4D68600888B4C /* palsup.iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = palsup.iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2537826122F4D68600888B4C /* palsup_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palsup_iosTests.swift; sourceTree = "<group>"; };
+		2537826322F4D68600888B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2537826822F4D68700888B4C /* palsup.iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = palsup.iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2537826C22F4D68700888B4C /* palsup_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palsup_iosUITests.swift; sourceTree = "<group>"; };
+		2537826E22F4D68700888B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2537824322F4D68500888B4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537825A22F4D68600888B4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537826522F4D68700888B4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2537823D22F4D68500888B4C = {
+			isa = PBXGroup;
+			children = (
+				2537824822F4D68500888B4C /* palsup.ios */,
+				2537826022F4D68600888B4C /* palsup.iosTests */,
+				2537826B22F4D68700888B4C /* palsup.iosUITests */,
+				2537824722F4D68500888B4C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2537824722F4D68500888B4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2537824622F4D68500888B4C /* palsup.ios.app */,
+				2537825D22F4D68600888B4C /* palsup.iosTests.xctest */,
+				2537826822F4D68700888B4C /* palsup.iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2537824822F4D68500888B4C /* palsup.ios */ = {
+			isa = PBXGroup;
+			children = (
+				2537824922F4D68500888B4C /* AppDelegate.swift */,
+				2537824B22F4D68500888B4C /* ViewController.swift */,
+				2537824D22F4D68500888B4C /* Main.storyboard */,
+				2537825322F4D68600888B4C /* Assets.xcassets */,
+				2537825522F4D68600888B4C /* LaunchScreen.storyboard */,
+				2537825822F4D68600888B4C /* Info.plist */,
+				2537825022F4D68500888B4C /* palsup_ios.xcdatamodeld */,
+			);
+			path = palsup.ios;
+			sourceTree = "<group>";
+		};
+		2537826022F4D68600888B4C /* palsup.iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				2537826122F4D68600888B4C /* palsup_iosTests.swift */,
+				2537826322F4D68600888B4C /* Info.plist */,
+			);
+			path = palsup.iosTests;
+			sourceTree = "<group>";
+		};
+		2537826B22F4D68700888B4C /* palsup.iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2537826C22F4D68700888B4C /* palsup_iosUITests.swift */,
+				2537826E22F4D68700888B4C /* Info.plist */,
+			);
+			path = palsup.iosUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2537824522F4D68500888B4C /* palsup.ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2537827122F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.ios" */;
+			buildPhases = (
+				2537824222F4D68500888B4C /* Sources */,
+				2537824322F4D68500888B4C /* Frameworks */,
+				2537824422F4D68500888B4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = palsup.ios;
+			productName = palsup.ios;
+			productReference = 2537824622F4D68500888B4C /* palsup.ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2537825C22F4D68600888B4C /* palsup.iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2537827422F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.iosTests" */;
+			buildPhases = (
+				2537825922F4D68600888B4C /* Sources */,
+				2537825A22F4D68600888B4C /* Frameworks */,
+				2537825B22F4D68600888B4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2537825F22F4D68600888B4C /* PBXTargetDependency */,
+			);
+			name = palsup.iosTests;
+			productName = palsup.iosTests;
+			productReference = 2537825D22F4D68600888B4C /* palsup.iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2537826722F4D68700888B4C /* palsup.iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2537827722F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.iosUITests" */;
+			buildPhases = (
+				2537826422F4D68700888B4C /* Sources */,
+				2537826522F4D68700888B4C /* Frameworks */,
+				2537826622F4D68700888B4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2537826A22F4D68700888B4C /* PBXTargetDependency */,
+			);
+			name = palsup.iosUITests;
+			productName = palsup.iosUITests;
+			productReference = 2537826822F4D68700888B4C /* palsup.iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2537823E22F4D68500888B4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Deepnosis;
+				TargetAttributes = {
+					2537824522F4D68500888B4C = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					2537825C22F4D68600888B4C = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 2537824522F4D68500888B4C;
+					};
+					2537826722F4D68700888B4C = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = 2537824522F4D68500888B4C;
+					};
+				};
+			};
+			buildConfigurationList = 2537824122F4D68500888B4C /* Build configuration list for PBXProject "palsup.ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2537823D22F4D68500888B4C;
+			productRefGroup = 2537824722F4D68500888B4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2537824522F4D68500888B4C /* palsup.ios */,
+				2537825C22F4D68600888B4C /* palsup.iosTests */,
+				2537826722F4D68700888B4C /* palsup.iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2537824422F4D68500888B4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2537825722F4D68600888B4C /* LaunchScreen.storyboard in Resources */,
+				2537825422F4D68600888B4C /* Assets.xcassets in Resources */,
+				2537824F22F4D68500888B4C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537825B22F4D68600888B4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537826622F4D68700888B4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2537824222F4D68500888B4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2537824C22F4D68500888B4C /* ViewController.swift in Sources */,
+				2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */,
+				2537825222F4D68500888B4C /* palsup_ios.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537825922F4D68600888B4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2537826222F4D68600888B4C /* palsup_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2537826422F4D68700888B4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2537826D22F4D68700888B4C /* palsup_iosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2537825F22F4D68600888B4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2537824522F4D68500888B4C /* palsup.ios */;
+			targetProxy = 2537825E22F4D68600888B4C /* PBXContainerItemProxy */;
+		};
+		2537826A22F4D68700888B4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2537824522F4D68500888B4C /* palsup.ios */;
+			targetProxy = 2537826922F4D68700888B4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2537824D22F4D68500888B4C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2537824E22F4D68500888B4C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2537825522F4D68600888B4C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2537825622F4D68600888B4C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2537826F22F4D68700888B4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2537827022F4D68700888B4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2537827222F4D68700888B4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.ios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2537827322F4D68700888B4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.ios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2537827522F4D68700888B4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.iosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/palsup.ios.app/palsup.ios";
+			};
+			name = Debug;
+		};
+		2537827622F4D68700888B4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.iosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/palsup.ios.app/palsup.ios";
+			};
+			name = Release;
+		};
+		2537827822F4D68700888B4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.iosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = palsup.ios;
+			};
+			name = Debug;
+		};
+		2537827922F4D68700888B4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AZ393UALW;
+				INFOPLIST_FILE = palsup.iosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deepnosis.palsup.ios.palsup-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = palsup.ios;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2537824122F4D68500888B4C /* Build configuration list for PBXProject "palsup.ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2537826F22F4D68700888B4C /* Debug */,
+				2537827022F4D68700888B4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2537827122F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2537827222F4D68700888B4C /* Debug */,
+				2537827322F4D68700888B4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2537827422F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2537827522F4D68700888B4C /* Debug */,
+				2537827622F4D68700888B4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2537827722F4D68700888B4C /* Build configuration list for PBXNativeTarget "palsup.iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2537827822F4D68700888B4C /* Debug */,
+				2537827922F4D68700888B4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2537825022F4D68500888B4C /* palsup_ios.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2537825122F4D68500888B4C /* palsup_ios.xcdatamodel */,
+			);
+			currentVersion = 2537825122F4D68500888B4C /* palsup_ios.xcdatamodel */;
+			path = palsup_ios.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2537823E22F4D68500888B4C /* Project object */;
+}
