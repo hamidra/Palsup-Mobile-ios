@@ -6,8 +6,28 @@
 	<dict>
 		<key>palsup.ios.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2537824522F4D68500888B4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2537825C22F4D68600888B4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2537826722F4D68700888B4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

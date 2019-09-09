@@ -1,0 +1,22 @@
+PODS:
+  - Apollo (0.13.0):
+    - Apollo/Core (= 0.13.0)
+  - Apollo/Core (0.13.0)
+  - SwiftDate (6.0.3)
+
+DEPENDENCIES:
+  - Apollo
+  - SwiftDate
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Apollo
+    - SwiftDate
+
+SPEC CHECKSUMS:
+  Apollo: 603a59c12046c50f3188f4e5dfdae080d20ded55
+  SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
+
+PODFILE CHECKSUM: 8c66ee040e38ebf19140af72a33943f2f73ac893
+
+COCOAPODS: 1.7.5

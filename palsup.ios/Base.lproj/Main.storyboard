@@ -1,24 +1,381 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cTR-M4-QfV">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--EventList-->
+        <scene sceneID="bpa-WM-E3i">
+            <objects>
+                <viewController title="EventList" id="C8A-cD-gyh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgN-xu-a1p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Cd1-tb-jxg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="frB-rb-jnN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6h-Fn-fsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1273.913043478261" y="-739.28571428571422"/>
+        </scene>
         <!--View Controller-->
+        <scene sceneID="g7L-NS-hHu">
+            <objects>
+                <viewController id="8xo-bT-Gma" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hxd-cV-fjP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OXi-yD-StH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75y-rM-3NB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2318.840579710145" y="-756.02678571428567"/>
+        </scene>
+        <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="BYZ-38-t0r" customClass="SearchViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="communityBanner" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-zT-9C9">
+                                <rect key="frame" x="10" y="80" width="394" height="224"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wj4-ax-uS7" userLabel="Button Stack View">
+                                <rect key="frame" x="30" y="370" width="354" height="350"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-bB-AcL" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="41.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="Soon">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="handleSearchClickWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eT7-5z-nTv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rF3-ef-Wzf" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="61.5" width="354" height="42"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="Today">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV8-zP-Lad" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="123.5" width="354" height="41.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="This Week">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1R-iE-j6O" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="185" width="354" height="41.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="This weekend">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCp-fV-SX4" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="246.5" width="354" height="42"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="Anytime">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjp-2W-hff" customClass="SearchButton" customModule="palsup_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="308.5" width="354" height="41.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <state key="normal" title="Sometime">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerWidthRatio">
+                                                <real key="value" value="0.050000000000000003"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="dyR-5E-6TZ"/>
+                                </constraints>
+                            </stackView>
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Coffee, Hiking, Kayaking, ..." translatesAutoresizingMaskIntoConstraints="NO" id="fcD-88-YQY">
+                                <rect key="frame" x="0.0" y="304" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8Mt-zT-9C9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="6lE-rP-WUq"/>
+                            <constraint firstItem="fcD-88-YQY" firstAttribute="top" secondItem="8Mt-zT-9C9" secondAttribute="bottom" id="DXz-3h-4fI"/>
+                            <constraint firstItem="wj4-ax-uS7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="GKs-OX-cF7"/>
+                            <constraint firstItem="wj4-ax-uS7" firstAttribute="top" secondItem="fcD-88-YQY" secondAttribute="bottom" constant="10" id="IVS-Bs-5Fp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wj4-ax-uS7" secondAttribute="trailing" constant="30" id="Jxd-31-rPk"/>
+                            <constraint firstItem="8Mt-zT-9C9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YOZ-dN-BHZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fcD-88-YQY" secondAttribute="trailing" id="g1g-W3-qLU"/>
+                            <constraint firstItem="8Mt-zT-9C9" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="ler-Te-Gp0"/>
+                            <constraint firstItem="fcD-88-YQY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tRM-Eu-II7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Mt-zT-9C9" secondAttribute="trailing" constant="10" id="vym-AC-Wkp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="What are you down for?" largeTitleDisplayMode="always" id="LWQ-bU-a25"/>
+                    <connections>
+                        <outlet property="activitySearchBar" destination="fcD-88-YQY" id="uQn-iZ-wIr"/>
+                        <segue destination="W39-fZ-43z" kind="show" identifier="performSearch" id="t2i-zm-ugJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2163.768115942029" y="-29.464285714285712"/>
+        </scene>
+        <!--SearchResult-->
+        <scene sceneID="4dE-de-Flq">
+            <objects>
+                <viewController id="W39-fZ-43z" userLabel="SearchResult" customClass="SearchResultViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v41-ko-yIi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-nS-FlQ" userLabel="Pal Collection View">
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
+                                <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sLv-LV-ytl">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="W39-fZ-43z" id="Gpx-KN-e6s"/>
+                                    <outlet property="delegate" destination="W39-fZ-43z" id="1bN-Ej-zdN"/>
+                                </connections>
+                            </collectionView>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-uB-9Mu" userLabel="Event Collection View">
+                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.67843137249999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aFv-bE-SGs">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <segmentedControl opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rl0-J0-Qs9">
+                                <rect key="frame" x="146.5" y="108" width="121" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7qq-i4-6Lf"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7D9-9M-cbX" firstAttribute="trailing" secondItem="Ge6-nS-FlQ" secondAttribute="trailing" id="2nU-cP-J9Q"/>
+                            <constraint firstItem="7D9-9M-cbX" firstAttribute="bottom" secondItem="Ge6-nS-FlQ" secondAttribute="bottom" id="IIS-fq-xM5"/>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="leading" secondItem="7D9-9M-cbX" secondAttribute="leading" id="WAm-jG-JDl"/>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="top" secondItem="rl0-J0-Qs9" secondAttribute="bottom" constant="10" id="Yeh-8I-Lzw"/>
+                            <constraint firstAttribute="trailing" secondItem="nbo-uB-9Mu" secondAttribute="trailing" id="Yvi-7S-3OV"/>
+                            <constraint firstAttribute="bottom" secondItem="nbo-uB-9Mu" secondAttribute="bottom" id="ebs-65-igJ"/>
+                            <constraint firstItem="Ge6-nS-FlQ" firstAttribute="leading" secondItem="7D9-9M-cbX" secondAttribute="leading" id="lPY-iu-yOV"/>
+                            <constraint firstItem="Ge6-nS-FlQ" firstAttribute="top" secondItem="rl0-J0-Qs9" secondAttribute="bottom" constant="10" id="o6b-ht-Ynp"/>
+                            <constraint firstItem="rl0-J0-Qs9" firstAttribute="centerX" secondItem="v41-ko-yIi" secondAttribute="centerX" id="wVx-Xo-gK8"/>
+                            <constraint firstItem="rl0-J0-Qs9" firstAttribute="top" secondItem="7D9-9M-cbX" secondAttribute="top" constant="20" id="xkT-vX-jFd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7D9-9M-cbX"/>
+                    </view>
+                    <connections>
+                        <outlet property="eventsCollectionView" destination="nbo-uB-9Mu" id="D0d-20-dWF"/>
+                        <outlet property="palsCollectionView" destination="Ge6-nS-FlQ" id="qFk-nW-B3J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wq8-QX-oTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3208.6956521739135" y="-29.464285714285712"/>
+        </scene>
+        <!--ActivityList-->
+        <scene sceneID="cTs-tq-9Bc">
+            <objects>
+                <viewController title="ActivityList" id="kxq-4n-moT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Og-eY-WGS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="c7D-dL-g9G"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SPV-Ns-So7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vio-gG-LJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2163.768115942029" y="690.40178571428567"/>
+        </scene>
+        <!--EventNavigation-->
+        <scene sceneID="UhT-zS-s8z">
+            <objects>
+                <navigationController title="EventNavigation" automaticallyAdjustsScrollViewInsets="NO" id="AI9-D1-CsF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" id="T1i-kc-jB4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nhx-UD-64l">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C8A-cD-gyh" kind="relationship" relationship="rootViewController" id="Xku-4g-mSB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9k-qS-36Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363.768115942029" y="-739.28571428571422"/>
+        </scene>
+        <!--SearchNavigation-->
+        <scene sceneID="NBL-hU-6VJ">
+            <objects>
+                <navigationController title="SearchNavigation" automaticallyAdjustsScrollViewInsets="NO" id="pdh-fp-Jvb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Palup" id="3k4-Si-aHb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1aX-Fs-phV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xEn-KX-xaR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6b-fw-nwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1253.6231884057972" y="-29.464285714285712"/>
+        </scene>
+        <!--ActivityNavigation-->
+        <scene sceneID="tCp-k7-5mU">
+            <objects>
+                <navigationController title="ActivityNavigation" automaticallyAdjustsScrollViewInsets="NO" id="khB-Pm-TeU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Activity" id="1nh-Sc-mCT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eLH-p2-QyC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kxq-4n-moT" kind="relationship" relationship="rootViewController" id="p6x-xc-Ak4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E33-VL-qjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1253.6231884057972" y="690.40178571428567"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="AaF-Kc-c70">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cTR-M4-QfV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rLd-7b-FkE">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pdh-fp-Jvb" kind="relationship" relationship="viewControllers" id="DkJ-Df-45J"/>
+                        <segue destination="AI9-D1-CsF" kind="relationship" relationship="viewControllers" id="3zz-mh-2C4"/>
+                        <segue destination="khB-Pm-TeU" kind="relationship" relationship="viewControllers" id="eUX-gW-RoE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEw-hL-zkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1170" y="166"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="communityBanner" width="215" height="150"/>
+    </resources>
 </document>

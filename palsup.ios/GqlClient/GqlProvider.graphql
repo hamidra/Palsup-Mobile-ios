@@ -1,0 +1,420 @@
+fragment locationFields on Location {
+  address
+  city
+  state
+  coordinates {
+    latitude
+    longitude
+    raidus
+  }
+}
+
+fragment dateRangeFields on DateRange {
+  startDate
+  endDate
+}
+
+fragment nameFields on Name {
+  first
+  last
+}
+
+fragment pictureFields on Picture {
+  large
+  medium
+  thumbnail
+}
+
+
+
+mutation createUser($user:UserInput){
+  createUser(user:$user) {
+    id
+    name{
+      ...nameFields
+    }
+    gender
+    registrationDate
+    dob
+    email
+    cell
+    location{
+      ...locationFields
+    }
+    absolutePicture{
+      ...pictureFields
+    }
+  }
+}
+
+
+mutation updateUser($id:ID!, $user:UserInput){
+  updateUser(id:$id, user:$user ) {
+    id
+    name{
+      ...nameFields
+    }
+    gender
+    registrationDate
+    dob
+    email
+    cell
+    location{
+      ...locationFields
+    }
+    absolutePicture{
+      ...pictureFields
+    }
+  }
+}
+
+query getUsersById($ids:[ID!]){
+  getUsersById(ids:$ids) {
+    id
+    name{
+      ...nameFields
+    }
+    gender
+    registrationDate
+    dob
+    email
+    cell
+    location{
+      ...locationFields
+    }
+    absolutePicture{
+      ...pictureFields
+    }
+  }
+}
+
+query getUserByAuthInfo($authInfo:AuthInfoInput){
+  getUserByAuthInfo(authInfo:$authInfo) {
+    id
+    name{
+      ...nameFields
+    }
+    gender
+    registrationDate
+    dob
+    email
+    cell
+    location{
+      ...locationFields
+    }
+    absolutePicture{
+      ...pictureFields
+    }
+  }
+}
+
+mutation createPal($pal:PalInput){
+  createPal(pal:$pal) {
+    id
+    activity
+    location {
+      ...locationFields
+    }
+    date{
+      ...dateRangeFields
+    }
+    interested
+  }
+}
+
+
+mutation addToPalsInterested($palId:ID!, $interestedPalId:ID!){
+  addToPalsInterested(palId:$palId, interestedPalId:$interestedPalId)
+}
+
+mutation removeFromPalsInterested($palId:ID!, $userId:ID!){
+  removeFromPalsInterested(palId:$palId, userId:$userId)
+}
+
+
+mutation addToEventsWaitlist($eventId:ID!, $userId:ID!){
+  addToEventsWaitlist(eventId:$eventId, userId:$userId)
+}
+
+mutation removeFromEventsWaitlist($eventId:ID!, $userId:ID!){
+  removeFromEventsWaitlist(eventId:$eventId, userId:$userId)
+}
+
+mutation submitVoteOnEventsWaitlist($eventId:ID!, $waitlistUserId:ID!, $vote:Boolean){
+  submitVoteOnEventsWaitlist(eventId:$eventId, waitlistUserId:$waitlistUserId, vote:$vote)
+}
+
+query getPalsByActivity($userId: ID, $activityFilter: ActivityFilterInput){
+  getPalsByActivity(userId:$userId, activityFilter:$activityFilter) {
+    id
+    user {
+      id
+      name {
+        ...nameFields
+      }
+      absolutePicture {
+        ...pictureFields
+      }
+    }
+    activity
+    date {
+      ...dateRangeFields
+    }
+    location {
+      ...locationFields
+    }
+    interested
+  }
+}
+
+query getPalsForUserSortedByDate($userId: ID!, $excludeIds:[ID]){
+  getPalsForUserSortedByDate(userId:$userId, excludeIds:$excludeIds) {
+    id
+    activity
+    date{
+      ...dateRangeFields
+    }
+    interested
+  }
+}
+
+query getPalNotificationsForUser($userId: ID!){
+  getPalNotificationsForUser(userId:$userId) {
+    pal {
+      id
+      activity
+      date{
+        ...dateRangeFields
+      }
+      interested
+    }
+    info {
+      totalCount
+      newInterestCount
+      date
+    }
+  }
+}
+
+mutation createEvent($event:EventInput){
+  createEvent(event:$event) {
+    id
+    description
+    activity
+    date {
+      ...dateRangeFields
+    }
+    location {
+      ...locationFields
+    }
+    absoluteImage
+  }
+}
+
+mutation updateEvent($id:ID!, $patch: EventInput){
+  updateEvent(id:$id, patch:$patch ) {
+    id
+    description
+    activity
+    date {
+      ...dateRangeFields
+    }
+    location {
+      ...locationFields
+    }
+    group {
+      members {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+      waitlist {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+    }
+    absoluteImage
+  }
+}
+
+query getEventsByActivity($userId:ID, $activityFilter: ActivityFilterInput){
+  getEventsByActivity(userId:$userId, activityFilter:$activityFilter) {
+    id
+    description
+    activity
+    date {
+      ...dateRangeFields
+    }
+    location {
+      ...locationFields
+    }
+    group {
+      members {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+      waitlist {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+    }
+    absoluteImage
+  }
+}
+
+query getEventsForUserSortedByDate($userId: ID!, $excludeIds:[ID]){
+  getEventsForUserSortedByDate(userId:$userId, excludeIds:$excludeIds) {
+    id
+    description
+    activity
+    date {
+      ...dateRangeFields
+    }
+    location {
+      ...locationFields
+    }
+    group {
+      members {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+      waitlist {
+        id
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+    }
+    absoluteImage
+  }
+}
+
+query getEventNotificationsForUser($userId: ID!){
+  getEventNotificationsForUser(userId:$userId) {
+    event {
+      id
+      description
+      activity
+      date {
+        ...dateRangeFields
+      }
+      location {
+        ...locationFields
+      }
+      group {
+        members {
+          id
+          absolutePicture {
+            ...pictureFields
+          }
+        }
+        waitlist {
+          id
+          absolutePicture {
+            ...pictureFields
+          }
+        }
+      }
+      absoluteImage
+    }
+    info {
+      totalCount
+      new
+      newMessageCount
+      newInterestCount
+      date
+    }
+  }
+}
+
+query getEventConversation($eventId: ID!) {
+  getEventConversation(eventId:$eventId) {
+    id
+    group {
+      conversation {
+      from {
+        id
+        name {
+          ...nameFields
+        }
+        absolutePicture {
+          ...pictureFields
+        }
+      }
+      to
+      type
+      content {
+        text
+      }
+      }
+    }
+  }
+}
+
+
+query getEventMembers($eventId: ID!){
+  getEventMembers(eventId:$eventId) {
+    id
+    name {
+      ...nameFields
+    }
+    absolutePicture {
+      ...pictureFields
+    }
+    gender
+    dob
+    location {
+      ...locationFields
+    }
+  }
+}
+
+
+query getEventWaitlist($eventId: ID!){
+  getEventWaitlist(eventId:$eventId) {
+    id
+    name {
+      ...nameFields
+    }
+    absolutePicture {
+      ...pictureFields
+    }
+    gender
+    dob
+    location {
+      ...locationFields
+    }
+  }
+}
+
+
+query getNotificationCountsForUser($userId: ID!){
+  getNotificationCountsForUser(userId:$userId) {
+    event
+    pal
+  }
+}
+
+
+mutation markEventNotificationsAsSeen($userId:ID!, $eventId:ID!){
+  markEventNotificationsAsSeen(userId:$userId, eventId:$eventId)
+}
+
+mutation markPalNotificationsAsSeen($userId:ID!, $palId:ID!){
+  markPalNotificationsAsSeen(userId:$userId, palId:$palId)
+}
+
+
+mutation sendMessage($message: MessageInput) {
+  sendMessage(message:$message)
+}
+
