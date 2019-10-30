@@ -13,29 +13,6 @@ class SearchFilter {
     var date: DateRange?
 }
 
-class DateRange {
-    var startDate:Date?
-    var endDate:Date?
-    init (start:Date, end:Date){
-        startDate = start
-        endDate = end
-    }
-    static func getDateRangeFromString(_ date:String?)->DateRange?{
-        switch date?.lowercased() {
-        case "soon":
-            return DateRange(start:Date(), end:Date()+5.hours)
-        case "today":
-            return DateRange(start:Date(), end:Date().dateAt(.endOfDay))
-        case "week":
-            return DateRange(start:Date(), end:Date().dateAt(.endOfWeek))
-        case "weekend":
-            return DateRange(start:Date().dateAt(.startOfWeek)+5.days, end: Date().dateAt(.startOfWeek)+8.days)
-        default:
-            return nil
-        }
-    }
-}
-
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var activitySearchBar: UISearchBar!
@@ -52,7 +29,6 @@ class SearchViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "performSearch" {
             if let vc = segue.destination as? SearchResultViewController, let filter = sender as? SearchFilter {
                 vc.searchFilter = filter
@@ -62,7 +38,6 @@ class SearchViewController: UIViewController {
                 print("not happening")
             }
         }
-    }
-    
+    }    
 }
 

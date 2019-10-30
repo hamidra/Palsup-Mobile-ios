@@ -23,6 +23,9 @@
 		2577EF1D23061BB400D9EA98 /* GqlCient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF1C23061BB400D9EA98 /* GqlCient.swift */; };
 		2577EF26230CC1A600D9EA98 /* PalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */; };
 		2577EF27230CC1A600D9EA98 /* PalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */; };
+		25ED9B162368C00E0089C901 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B152368C00E0089C901 /* Date.swift */; };
+		25ED9B1B23690B4A0089C901 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */; };
+		25ED9B1C23690B4A0089C901 /* EventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */; };
 		A2455DADED953A826C61206E /* Pods_palsup_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C315E5CF55F9A75A4782597 /* Pods_palsup_ios.framework */; };
 		E8720E7EC995001B811F9005 /* Pods_palsup_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AEED21643B810318077FA3 /* Pods_palsup_iosTests.framework */; };
 		FF3CAB90B2D81B763A91AE7E /* Pods_palsup_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238E7C3A1234F0445795075E /* Pods_palsup_iosUITests.framework */; };
@@ -69,6 +72,9 @@
 		2577EF1C23061BB400D9EA98 /* GqlCient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GqlCient.swift; sourceTree = "<group>"; };
 		2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalCollectionViewCell.swift; sourceTree = "<group>"; };
 		2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PalCollectionViewCell.xib; sourceTree = "<group>"; };
+		25ED9B152368C00E0089C901 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C315E5CF55F9A75A4782597 /* Pods_palsup_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_palsup_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65263BB83FFC69A6F1444DAA /* Pods-palsup.iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-palsup.iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-palsup.iosUITests/Pods-palsup.iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EFD74B1C7604738374F6787 /* Pods-palsup.ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-palsup.ios.release.xcconfig"; path = "Target Support Files/Pods-palsup.ios/Pods-palsup.ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		2537824822F4D68500888B4C /* palsup.ios */ = {
 			isa = PBXGroup;
 			children = (
+				25ED9B142368BFED0089C901 /* Utilities */,
 				2577EF0E2304839300D9EA98 /* Controllers */,
 				2537825822F4D68600888B4C /* Info.plist */,
 				2537824922F4D68500888B4C /* AppDelegate.swift */,
@@ -192,6 +199,8 @@
 				2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */,
 				2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */,
 				2537827C22F8E00D00888B4C /* SearchButton.swift */,
+				25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */,
+				25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +223,14 @@
 				2577EF1C23061BB400D9EA98 /* GqlCient.swift */,
 			);
 			path = GqlClient;
+			sourceTree = "<group>";
+		};
+		25ED9B142368BFED0089C901 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				25ED9B152368C00E0089C901 /* Date.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +346,7 @@
 				2537825422F4D68600888B4C /* Assets.xcassets in Resources */,
 				2577EF27230CC1A600D9EA98 /* PalCollectionViewCell.xib in Resources */,
 				2537824F22F4D68500888B4C /* Main.storyboard in Resources */,
+				25ED9B1C23690B4A0089C901 /* EventCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2577EF16230614F400D9EA98 /* GqlProvider.graphql in Sources */,
+				25ED9B1B23690B4A0089C901 /* EventCollectionViewCell.swift in Sources */,
 				2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */,
 				2577EF26230CC1A600D9EA98 /* PalCollectionViewCell.swift in Sources */,
 				2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */,
@@ -465,6 +484,7 @@
 				2577EF1D23061BB400D9EA98 /* GqlCient.swift in Sources */,
 				2537825222F4D68500888B4C /* palsup_ios.xcdatamodeld in Sources */,
 				2537827D22F8E00D00888B4C /* SearchButton.swift in Sources */,
+				25ED9B162368C00E0089C901 /* Date.swift in Sources */,
 				25707A6A230F3A65002DAF29 /* GeneratedAPI.swift in Sources */,
 				2577EF182306152400D9EA98 /* GqlProvider.swift in Sources */,
 			);

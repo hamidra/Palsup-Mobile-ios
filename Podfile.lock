@@ -2,21 +2,29 @@ PODS:
   - Apollo (0.13.0):
     - Apollo/Core (= 0.13.0)
   - Apollo/Core (0.13.0)
+  - Kingfisher (5.7.0)
+  - SnapKit (5.0.0)
   - SwiftDate (6.0.3)
 
 DEPENDENCIES:
   - Apollo
+  - Kingfisher (~> 5.0)
+  - SnapKit (~> 5.0)
   - SwiftDate
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Apollo
+    - Kingfisher
+    - SnapKit
     - SwiftDate
 
 SPEC CHECKSUMS:
   Apollo: 603a59c12046c50f3188f4e5dfdae080d20ded55
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
 
-PODFILE CHECKSUM: 8c66ee040e38ebf19140af72a33943f2f73ac893
+PODFILE CHECKSUM: c03400f30a41ac10425faa96ca7bfc35412539ac
 
 COCOAPODS: 1.7.5

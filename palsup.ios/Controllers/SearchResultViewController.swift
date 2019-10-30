@@ -13,6 +13,19 @@ class SearchResultViewController: UIViewController {
   @IBOutlet weak var palsCollectionView: UICollectionView!
   @IBOutlet weak var eventsCollectionView: UICollectionView!
   
+  @IBAction func switchView(_ segment: UISegmentedControl) {
+    switch segment.selectedSegmentIndex {
+      case 0:
+        palsCollectionView.isHidden = false
+        eventsCollectionView.isHidden = true
+      case 1:
+        palsCollectionView.isHidden = true
+        eventsCollectionView.isHidden = false
+      default:
+        break
+    }
+  }
+  
   var eventsByActivity:[GetEventsByActivityQuery.Data.GetEventsByActivity?]? {
     didSet {
       eventsCollectionView.reloadData()
@@ -31,7 +44,7 @@ class SearchResultViewController: UIViewController {
     //register the cells
     palsCollectionView.register(UINib.init(nibName: "PalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PalCollectionViewCell")
     
-    eventsCollectionView.register(UINib.init(nibName: "PalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EventCollectionViewCell")
+    eventsCollectionView.register(UINib.init(nibName: "EventCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EventCollectionViewCell")
     
     
     //query the results
@@ -88,11 +101,14 @@ extension SearchResultViewController : UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    //check if item is not null before showing the cell
-    let palCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PalCollectionViewCell", for: indexPath) as! PalCollectionViewCell
-    palCell.configure(with: palsByActivity?[indexPath.item]?.user?.name.fragments.nameFields)
-    return palCell
+    if collectionView == palsCollectionView {
+        let palCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PalCollectionViewCell", for: indexPath) as! PalCollectionViewCell
+        palCell.configure(with: palsByActivity?[indexPath.item])
+        return palCell
+    } else {
+      let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
+      eventCell.configure(with: palsByActivity?[indexPath.item])
+      return eventCell
+    }
   }
-  
-  
 }
