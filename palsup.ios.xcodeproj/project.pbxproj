@@ -16,16 +16,24 @@
 		2537826222F4D68600888B4C /* palsup_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537826122F4D68600888B4C /* palsup_iosTests.swift */; };
 		2537826D22F4D68700888B4C /* palsup_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537826C22F4D68700888B4C /* palsup_iosUITests.swift */; };
 		2537827D22F8E00D00888B4C /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537827C22F8E00D00888B4C /* SearchButton.swift */; };
+		2555FD1C2375F6430081545A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2555FD1B2375F6430081545A /* Model.swift */; };
+		2555FD1E23764E870081545A /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2555FD1D23764E870081545A /* EventListViewController.swift */; };
+		2555FD262379096E0081545A /* EventConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2555FD252379096E0081545A /* EventConversationViewController.swift */; };
+		25648EB0236BCE76005FA0CD /* EventInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25648EAF236BCE76005FA0CD /* EventInfoViewController.swift */; };
+		25648EB2236BCF32005FA0CD /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25648EB1236BCF32005FA0CD /* EventDetailView.swift */; };
 		25707A6A230F3A65002DAF29 /* GeneratedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25707A69230F3A65002DAF29 /* GeneratedAPI.swift */; };
 		2577EF12230492C700D9EA98 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF11230492C700D9EA98 /* SearchResultViewController.swift */; };
 		2577EF16230614F400D9EA98 /* GqlProvider.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF15230614F400D9EA98 /* GqlProvider.graphql */; };
-		2577EF182306152400D9EA98 /* GqlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF172306152400D9EA98 /* GqlProvider.swift */; };
-		2577EF1D23061BB400D9EA98 /* GqlCient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF1C23061BB400D9EA98 /* GqlCient.swift */; };
-		2577EF26230CC1A600D9EA98 /* PalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */; };
-		2577EF27230CC1A600D9EA98 /* PalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */; };
+		2577EF1D23061BB400D9EA98 /* GqlClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577EF1C23061BB400D9EA98 /* GqlClient.swift */; };
+		25943DBD2383A2870011774C /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25943DBC2383A2870011774C /* Errors.swift */; };
+		25943DC12384FB4D0011774C /* PalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25943DC02384FB4D0011774C /* PalListViewController.swift */; };
+		25943DC32385E7200011774C /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25943DC22385E71F0011774C /* CardCollectionViewCell.swift */; };
+		25DFA3A7237B90B3001D0499 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DFA3A6237B90B3001D0499 /* UIColor+Extensions.swift */; };
 		25ED9B162368C00E0089C901 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B152368C00E0089C901 /* Date.swift */; };
-		25ED9B1B23690B4A0089C901 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */; };
-		25ED9B1C23690B4A0089C901 /* EventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */; };
+		25ED9B1E236A297D0089C901 /* PalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B1D236A297D0089C901 /* PalCollectionViewCell.swift */; };
+		25ED9B20236A43020089C901 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B1F236A43020089C901 /* EventCollectionViewCell.swift */; };
+		25ED9B22236B71330089C901 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B21236B71330089C901 /* UserInfoViewController.swift */; };
+		25ED9B24236B8CB40089C901 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25ED9B23236B8CB40089C901 /* UserDetailView.swift */; };
 		A2455DADED953A826C61206E /* Pods_palsup_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C315E5CF55F9A75A4782597 /* Pods_palsup_ios.framework */; };
 		E8720E7EC995001B811F9005 /* Pods_palsup_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AEED21643B810318077FA3 /* Pods_palsup_iosTests.framework */; };
 		FF3CAB90B2D81B763A91AE7E /* Pods_palsup_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238E7C3A1234F0445795075E /* Pods_palsup_iosUITests.framework */; };
@@ -65,16 +73,24 @@
 		2537826C22F4D68700888B4C /* palsup_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palsup_iosUITests.swift; sourceTree = "<group>"; };
 		2537826E22F4D68700888B4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2537827C22F8E00D00888B4C /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		2555FD1B2375F6430081545A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2555FD1D23764E870081545A /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		2555FD252379096E0081545A /* EventConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConversationViewController.swift; sourceTree = "<group>"; };
+		25648EAF236BCE76005FA0CD /* EventInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoViewController.swift; sourceTree = "<group>"; };
+		25648EB1236BCF32005FA0CD /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		25707A69230F3A65002DAF29 /* GeneratedAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedAPI.swift; sourceTree = "<group>"; };
 		2577EF11230492C700D9EA98 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		2577EF15230614F400D9EA98 /* GqlProvider.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GqlProvider.graphql; sourceTree = "<group>"; };
-		2577EF172306152400D9EA98 /* GqlProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GqlProvider.swift; sourceTree = "<group>"; };
-		2577EF1C23061BB400D9EA98 /* GqlCient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GqlCient.swift; sourceTree = "<group>"; };
-		2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalCollectionViewCell.swift; sourceTree = "<group>"; };
-		2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PalCollectionViewCell.xib; sourceTree = "<group>"; };
+		2577EF1C23061BB400D9EA98 /* GqlClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GqlClient.swift; sourceTree = "<group>"; };
+		25943DBC2383A2870011774C /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		25943DC02384FB4D0011774C /* PalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalListViewController.swift; sourceTree = "<group>"; };
+		25943DC22385E71F0011774C /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		25DFA3A6237B90B3001D0499 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		25ED9B152368C00E0089C901 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
-		25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCollectionViewCell.xib; sourceTree = "<group>"; };
+		25ED9B1D236A297D0089C901 /* PalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalCollectionViewCell.swift; sourceTree = "<group>"; };
+		25ED9B1F236A43020089C901 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		25ED9B21236B71330089C901 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		25ED9B23236B8CB40089C901 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		4C315E5CF55F9A75A4782597 /* Pods_palsup_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_palsup_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65263BB83FFC69A6F1444DAA /* Pods-palsup.iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-palsup.iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-palsup.iosUITests/Pods-palsup.iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EFD74B1C7604738374F6787 /* Pods-palsup.ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-palsup.ios.release.xcconfig"; path = "Target Support Files/Pods-palsup.ios/Pods-palsup.ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,16 +177,19 @@
 		2537824822F4D68500888B4C /* palsup.ios */ = {
 			isa = PBXGroup;
 			children = (
+				25DFA3A5237B9062001D0499 /* Extensions */,
+				2555FD1A2375F4F30081545A /* Models */,
 				25ED9B142368BFED0089C901 /* Utilities */,
 				2577EF0E2304839300D9EA98 /* Controllers */,
+				2537827E22F8E4FA00888B4C /* Views */,
+				2577EF192306152E00D9EA98 /* GqlClient */,
 				2537825822F4D68600888B4C /* Info.plist */,
 				2537824922F4D68500888B4C /* AppDelegate.swift */,
 				2537825322F4D68600888B4C /* Assets.xcassets */,
 				2537825522F4D68600888B4C /* LaunchScreen.storyboard */,
 				2537824D22F4D68500888B4C /* Main.storyboard */,
 				2537825022F4D68500888B4C /* palsup_ios.xcdatamodeld */,
-				2537827E22F8E4FA00888B4C /* Views */,
-				2577EF192306152E00D9EA98 /* GqlClient */,
+				25943DBC2383A2870011774C /* Errors.swift */,
 			);
 			path = palsup.ios;
 			sourceTree = "<group>";
@@ -196,20 +215,34 @@
 		2537827E22F8E4FA00888B4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2577EF24230CC1A600D9EA98 /* PalCollectionViewCell.swift */,
-				2577EF25230CC1A600D9EA98 /* PalCollectionViewCell.xib */,
 				2537827C22F8E00D00888B4C /* SearchButton.swift */,
-				25ED9B1923690B4A0089C901 /* EventCollectionViewCell.swift */,
-				25ED9B1A23690B4A0089C901 /* EventCollectionViewCell.xib */,
+				25ED9B1D236A297D0089C901 /* PalCollectionViewCell.swift */,
+				25ED9B1F236A43020089C901 /* EventCollectionViewCell.swift */,
+				25ED9B23236B8CB40089C901 /* UserDetailView.swift */,
+				25648EB1236BCF32005FA0CD /* EventDetailView.swift */,
+				25943DC22385E71F0011774C /* CardCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2555FD1A2375F4F30081545A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2555FD1B2375F6430081545A /* Model.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2577EF0E2304839300D9EA98 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2555FD1D23764E870081545A /* EventListViewController.swift */,
 				2537824B22F4D68500888B4C /* SearchViewController.swift */,
 				2577EF11230492C700D9EA98 /* SearchResultViewController.swift */,
+				25ED9B21236B71330089C901 /* UserInfoViewController.swift */,
+				25648EAF236BCE76005FA0CD /* EventInfoViewController.swift */,
+				2555FD252379096E0081545A /* EventConversationViewController.swift */,
+				25943DC02384FB4D0011774C /* PalListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,10 +252,17 @@
 			children = (
 				25707A69230F3A65002DAF29 /* GeneratedAPI.swift */,
 				2577EF15230614F400D9EA98 /* GqlProvider.graphql */,
-				2577EF172306152400D9EA98 /* GqlProvider.swift */,
-				2577EF1C23061BB400D9EA98 /* GqlCient.swift */,
+				2577EF1C23061BB400D9EA98 /* GqlClient.swift */,
 			);
 			path = GqlClient;
+			sourceTree = "<group>";
+		};
+		25DFA3A5237B9062001D0499 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25DFA3A6237B90B3001D0499 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		25ED9B142368BFED0089C901 /* Utilities */ = {
@@ -344,9 +384,7 @@
 			files = (
 				2537825722F4D68600888B4C /* LaunchScreen.storyboard in Resources */,
 				2537825422F4D68600888B4C /* Assets.xcassets in Resources */,
-				2577EF27230CC1A600D9EA98 /* PalCollectionViewCell.xib in Resources */,
 				2537824F22F4D68500888B4C /* Main.storyboard in Resources */,
-				25ED9B1C23690B4A0089C901 /* EventCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,18 +513,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25943DC12384FB4D0011774C /* PalListViewController.swift in Sources */,
+				2555FD1E23764E870081545A /* EventListViewController.swift in Sources */,
+				25648EB2236BCF32005FA0CD /* EventDetailView.swift in Sources */,
+				25648EB0236BCE76005FA0CD /* EventInfoViewController.swift in Sources */,
 				2577EF16230614F400D9EA98 /* GqlProvider.graphql in Sources */,
-				25ED9B1B23690B4A0089C901 /* EventCollectionViewCell.swift in Sources */,
+				25ED9B20236A43020089C901 /* EventCollectionViewCell.swift in Sources */,
+				25ED9B1E236A297D0089C901 /* PalCollectionViewCell.swift in Sources */,
 				2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */,
-				2577EF26230CC1A600D9EA98 /* PalCollectionViewCell.swift in Sources */,
+				25ED9B24236B8CB40089C901 /* UserDetailView.swift in Sources */,
+				2555FD1C2375F6430081545A /* Model.swift in Sources */,
+				25ED9B22236B71330089C901 /* UserInfoViewController.swift in Sources */,
+				25DFA3A7237B90B3001D0499 /* UIColor+Extensions.swift in Sources */,
+				2555FD262379096E0081545A /* EventConversationViewController.swift in Sources */,
 				2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */,
+				25943DC32385E7200011774C /* CardCollectionViewCell.swift in Sources */,
 				2577EF12230492C700D9EA98 /* SearchResultViewController.swift in Sources */,
-				2577EF1D23061BB400D9EA98 /* GqlCient.swift in Sources */,
+				2577EF1D23061BB400D9EA98 /* GqlClient.swift in Sources */,
 				2537825222F4D68500888B4C /* palsup_ios.xcdatamodeld in Sources */,
+				25943DBD2383A2870011774C /* Errors.swift in Sources */,
 				2537827D22F8E00D00888B4C /* SearchButton.swift in Sources */,
 				25ED9B162368C00E0089C901 /* Date.swift in Sources */,
 				25707A6A230F3A65002DAF29 /* GeneratedAPI.swift in Sources */,
-				2577EF182306152400D9EA98 /* GqlProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

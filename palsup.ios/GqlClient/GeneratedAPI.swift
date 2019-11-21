@@ -5500,7 +5500,7 @@ public final class GetEventNotificationsForUserQuery: GraphQLQuery {
 
 public final class GetEventConversationQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getEventConversation($eventId: ID!) {\n  getEventConversation(eventId: $eventId) {\n    __typename\n    id\n    group {\n      __typename\n      conversation {\n        __typename\n        from {\n          __typename\n          id\n          name {\n            __typename\n            ...nameFields\n          }\n          absolutePicture {\n            __typename\n            ...pictureFields\n          }\n        }\n        to\n        type\n        content {\n          __typename\n          text\n        }\n      }\n    }\n  }\n}"
+    "query getEventConversation($eventId: ID!) {\n  getEventConversation(eventId: $eventId) {\n    __typename\n    id\n    group {\n      __typename\n      conversation {\n        __typename\n        id\n        from {\n          __typename\n          id\n          name {\n            __typename\n            ...nameFields\n          }\n          absolutePicture {\n            __typename\n            ...pictureFields\n          }\n        }\n        to\n        type\n        content {\n          __typename\n          timestamp\n          text\n        }\n      }\n    }\n  }\n}"
 
   public let operationName = "getEventConversation"
 
@@ -5629,6 +5629,7 @@ public final class GetEventConversationQuery: GraphQLQuery {
 
           public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("from", type: .object(From.selections)),
             GraphQLField("to", type: .scalar(GraphQLID.self)),
             GraphQLField("type", type: .scalar(MessageType.self)),
@@ -5641,8 +5642,8 @@ public final class GetEventConversationQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(from: From? = nil, to: GraphQLID? = nil, type: MessageType? = nil, content: Content? = nil) {
-            self.init(unsafeResultMap: ["__typename": "Message", "from": from.flatMap { (value: From) -> ResultMap in value.resultMap }, "to": to, "type": type, "content": content.flatMap { (value: Content) -> ResultMap in value.resultMap }])
+          public init(id: GraphQLID, from: From? = nil, to: GraphQLID? = nil, type: MessageType? = nil, content: Content? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Message", "id": id, "from": from.flatMap { (value: From) -> ResultMap in value.resultMap }, "to": to, "type": type, "content": content.flatMap { (value: Content) -> ResultMap in value.resultMap }])
           }
 
           public var __typename: String {
@@ -5651,6 +5652,15 @@ public final class GetEventConversationQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
             }
           }
 
@@ -5860,6 +5870,7 @@ public final class GetEventConversationQuery: GraphQLQuery {
 
             public static let selections: [GraphQLSelection] = [
               GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("timestamp", type: .scalar(String.self)),
               GraphQLField("text", type: .scalar(String.self)),
             ]
 
@@ -5869,8 +5880,8 @@ public final class GetEventConversationQuery: GraphQLQuery {
               self.resultMap = unsafeResultMap
             }
 
-            public init(text: String? = nil) {
-              self.init(unsafeResultMap: ["__typename": "MessageContent", "text": text])
+            public init(timestamp: String? = nil, text: String? = nil) {
+              self.init(unsafeResultMap: ["__typename": "MessageContent", "timestamp": timestamp, "text": text])
             }
 
             public var __typename: String {
@@ -5879,6 +5890,15 @@ public final class GetEventConversationQuery: GraphQLQuery {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var timestamp: String? {
+              get {
+                return resultMap["timestamp"] as? String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "timestamp")
               }
             }
 

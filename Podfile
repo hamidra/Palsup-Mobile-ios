@@ -10,6 +10,8 @@ target 'palsup.ios' do
   pod 'Apollo'
   pod 'Kingfisher', '~> 5.0'
   pod 'SnapKit', '~> 5.0'
+  pod 'PromisesSwift'
+  pod 'MessageKit'
   
   target 'palsup.iosTests' do
     inherit! :search_paths

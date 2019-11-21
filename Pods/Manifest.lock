@@ -2,29 +2,57 @@ PODS:
   - Apollo (0.13.0):
     - Apollo/Core (= 0.13.0)
   - Apollo/Core (0.13.0)
+  - InputBarAccessoryView (4.2.2)
   - Kingfisher (5.7.0)
+  - MessageKit (3.0.0):
+    - InputBarAccessoryView (~> 4.2.2)
+  - PromiseKit (6.10.0):
+    - PromiseKit/CorePromise (= 6.10.0)
+    - PromiseKit/Foundation (= 6.10.0)
+    - PromiseKit/UIKit (= 6.10.0)
+  - PromiseKit/CorePromise (6.10.0)
+  - PromiseKit/Foundation (6.10.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.10.0):
+    - PromiseKit/CorePromise
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
   - SnapKit (5.0.0)
   - SwiftDate (6.0.3)
 
 DEPENDENCIES:
   - Apollo
   - Kingfisher (~> 5.0)
+  - MessageKit
+  - PromiseKit (~> 6.8)
+  - PromisesSwift
   - SnapKit (~> 5.0)
   - SwiftDate
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Apollo
+    - InputBarAccessoryView
     - Kingfisher
+    - MessageKit
+    - PromiseKit
+    - PromisesObjC
+    - PromisesSwift
     - SnapKit
     - SwiftDate
 
 SPEC CHECKSUMS:
   Apollo: 603a59c12046c50f3188f4e5dfdae080d20ded55
+  InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
+  PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
 
-PODFILE CHECKSUM: c03400f30a41ac10425faa96ca7bfc35412539ac
+PODFILE CHECKSUM: 0e3821152c668a6c76381cddfb7792ed995e6699
 
 COCOAPODS: 1.7.5

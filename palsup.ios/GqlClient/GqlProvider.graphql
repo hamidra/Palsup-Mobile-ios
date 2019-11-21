@@ -341,20 +341,22 @@ query getEventConversation($eventId: ID!) {
     id
     group {
       conversation {
-      from {
         id
-        name {
-          ...nameFields
+        from {
+          id
+          name {
+            ...nameFields
+          }
+          absolutePicture {
+            ...pictureFields
+          }
         }
-        absolutePicture {
-          ...pictureFields
+        to
+        type
+        content {
+          timestamp
+          text
         }
-      }
-      to
-      type
-      content {
-        text
-      }
       }
     }
   }

@@ -42,19 +42,19 @@ class SearchResultViewController: UIViewController {
     super.viewDidLoad()
     
     //register the cells
-    palsCollectionView.register(UINib.init(nibName: "PalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PalCollectionViewCell")
+    palsCollectionView.register(PalCollectionViewCell.self, forCellWithReuseIdentifier: "PalCollectionViewCell")
     
-    eventsCollectionView.register(UINib.init(nibName: "EventCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EventCollectionViewCell")
+    eventsCollectionView.register(EventCollectionViewCell.self, forCellWithReuseIdentifier: "EventCollectionViewCell")
     
     
     //query the results
     if let filter = searchFilter {
       print("\(filter.activity!) \n from: \(filter.date?.startDate) \n to: \(filter.date?.endDate)")
-      var gqlActivityFilter = ActivityFilterInput(activity: filter.activity)
+      let gqlActivityFilter = ActivityFilterInput(activity: filter.activity)
       
       // Query Pals by Activity
-      var gqlGetPalsByActivityQuery = GetPalsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
-      GqlCient.shared.client.fetch(query: gqlGetPalsByActivityQuery){
+      let gqlGetPalsByActivityQuery = GetPalsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
+      GqlClient.shared.client.fetch(query: gqlGetPalsByActivityQuery) {
         result in
         switch result {
         case .success(let gqlResult):
@@ -65,8 +65,8 @@ class SearchResultViewController: UIViewController {
       }
       
       // Query Events by Activity
-      var gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
-      GqlCient.shared.client.fetch(query: gqlGetEventsByActivityQuery){
+      let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
+      GqlClient.shared.client.fetch(query: gqlGetEventsByActivityQuery){
         result in
         switch result {
         case .success(let gqlResult):
@@ -79,19 +79,40 @@ class SearchResultViewController: UIViewController {
   }
   
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showUserDetail" {
+      if let vc = segue.destination as? UserInfoViewController, let pal = sender as? GetPalsByActivityQuery.Data.GetPalsByActivity {
+        vc.pal = pal
+      }
+      else
+      {
+        print("not happening")
+      }
+    } else if segue.identifier == "showEventDetail" {
+      if let vc = segue.destination as? EventInfoViewController, let event = sender as? GetEventsByActivityQuery.Data.GetEventsByActivity {
+        vc.event = event
+      }
+      else
+      {
+        print("not happening")
+      }
+    }
+  }
   
+  func palCellTapAction(oPal: GetPalsByActivityQuery.Data.GetPalsByActivity?){
+    if let pal = oPal {
+      performSegue(withIdentifier: "showUserDetail", sender: pal)
+    }
+  }
+  
+  func eventCellTapAction(oEvent: GetEventsByActivityQuery.Data.GetEventsByActivity?){
+    if let event = oEvent {
+      performSegue(withIdentifier: "showEventDetail", sender: event)
+    }
+  }
 }
 
-extension SearchResultViewController : UICollectionViewDataSource {
+extension SearchResultViewController : UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if collectionView == palsCollectionView {
       return palsByActivity?.count ?? 0
@@ -102,12 +123,12 @@ extension SearchResultViewController : UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if collectionView == palsCollectionView {
-        let palCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PalCollectionViewCell", for: indexPath) as! PalCollectionViewCell
-        palCell.configure(with: palsByActivity?[indexPath.item])
-        return palCell
+      let palCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PalCollectionViewCell", for: indexPath) as! PalCollectionViewCell
+      palCell.configure(with: palsByActivity?[indexPath.item], tapAction:palCellTapAction)
+      return palCell
     } else {
       let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
-      eventCell.configure(with: palsByActivity?[indexPath.item])
+      eventCell.configure(with: eventsByActivity?[indexPath.item], tapAction:eventCellTapAction)
       return eventCell
     }
   }

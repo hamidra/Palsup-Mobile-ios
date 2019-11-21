@@ -67,5 +67,4 @@ class DateRange {
       return nil
     }
   }
-  
 }
