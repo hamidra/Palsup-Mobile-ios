@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250E98E5238DDBA800EFF82F /* VoteBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E4238DDBA800EFF82F /* VoteBarView.swift */; };
+		250E98E9238E10A900EFF82F /* SignedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E8238E10A900EFF82F /* SignedInUser.swift */; };
 		2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824922F4D68500888B4C /* AppDelegate.swift */; };
 		2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824B22F4D68500888B4C /* SearchViewController.swift */; };
 		2537824F22F4D68500888B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537824D22F4D68500888B4C /* Main.storyboard */; };
@@ -58,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		238E7C3A1234F0445795075E /* Pods_palsup_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_palsup_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		250E98E4238DDBA800EFF82F /* VoteBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBarView.swift; sourceTree = "<group>"; };
+		250E98E8238E10A900EFF82F /* SignedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUser.swift; sourceTree = "<group>"; };
 		2537824622F4D68500888B4C /* palsup.ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palsup.ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537824922F4D68500888B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2537824B22F4D68500888B4C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				25ED9B23236B8CB40089C901 /* UserDetailView.swift */,
 				25648EB1236BCF32005FA0CD /* EventDetailView.swift */,
 				25943DC22385E71F0011774C /* CardCollectionViewCell.swift */,
+				250E98E4238DDBA800EFF82F /* VoteBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				2555FD1B2375F6430081545A /* Model.swift */,
+				250E98E8238E10A900EFF82F /* SignedInUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -519,12 +525,14 @@
 				25648EB0236BCE76005FA0CD /* EventInfoViewController.swift in Sources */,
 				2577EF16230614F400D9EA98 /* GqlProvider.graphql in Sources */,
 				25ED9B20236A43020089C901 /* EventCollectionViewCell.swift in Sources */,
+				250E98E5238DDBA800EFF82F /* VoteBarView.swift in Sources */,
 				25ED9B1E236A297D0089C901 /* PalCollectionViewCell.swift in Sources */,
 				2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */,
 				25ED9B24236B8CB40089C901 /* UserDetailView.swift in Sources */,
 				2555FD1C2375F6430081545A /* Model.swift in Sources */,
 				25ED9B22236B71330089C901 /* UserInfoViewController.swift in Sources */,
 				25DFA3A7237B90B3001D0499 /* UIColor+Extensions.swift in Sources */,
+				250E98E9238E10A900EFF82F /* SignedInUser.swift in Sources */,
 				2555FD262379096E0081545A /* EventConversationViewController.swift in Sources */,
 				2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */,
 				25943DC32385E7200011774C /* CardCollectionViewCell.swift in Sources */,
@@ -640,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -695,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

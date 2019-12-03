@@ -23,7 +23,7 @@ class PalListViewController: UIViewController {
 
   @IBOutlet weak var palsTableView: UITableView!
   
-  var userId = "5c6383c5ad48667dc5bec1b2"
+  var userId = "5ddc223c33cbee51992efdb7"
   var palList: [PalListItem] = [] {
     didSet {
       palsTableView.reloadData()

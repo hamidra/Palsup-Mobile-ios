@@ -62,6 +62,14 @@ class EventConversationViewController: MessagesViewController {
     return formatter
   }()
   
+  func closeKeyboard() {
+    messageInputBar.inputTextView.resignFirstResponder()
+  }
+  
+  @objc func handleMessageViewTap(_ gestureRecognizer: UITapGestureRecognizer) {
+    closeKeyboard()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configureMessageCollectionView()
@@ -99,6 +107,10 @@ class EventConversationViewController: MessagesViewController {
     
     scrollsToBottomOnKeyboardBeginsEditing = true // default false
     maintainPositionOnKeyboardFrameChanged = true // default false
+    
+    // add tap genture recognizer
+       let tapGenstureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleMessageViewTap))
+    messagesCollectionView.addGestureRecognizer(tapGenstureRecognizer)
     
     messagesCollectionView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
@@ -161,7 +173,7 @@ class EventConversationViewController: MessagesViewController {
 extension EventConversationViewController: MessagesDataSource {
 
   func currentSender() -> SenderType {
-    return Sender(id: "5c6383c5ad48667dc5bec1b2", displayName: "Hamid")
+    return Sender(id: "5ddc223c33cbee51992efdb7", displayName: "Hamid")
   }
   
   func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -326,6 +338,7 @@ extension EventConversationViewController: InputBarAccessoryViewDelegate {
     self.messageInputBar.sendButton.stopAnimating()
     self.messageInputBar.inputTextView.placeholder = "Message"
     self.messagesCollectionView.scrollToBottom(animated: true)
+    self.closeKeyboard()
 
   }
 }

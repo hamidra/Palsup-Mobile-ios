@@ -22,7 +22,7 @@ class CardCollectionViewCell: UICollectionViewCell {
   private func setupView() {
     
     self.contentView.layer.cornerRadius = bounds.size.width * CGFloat(0.05)
-    self.contentView.layer.borderWidth = 1.0
+    self.contentView.layer.borderWidth = 0
     self.contentView.layer.borderColor = UIColor.clear.cgColor
     self.contentView.layer.masksToBounds = true
   }

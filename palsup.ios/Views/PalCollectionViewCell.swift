@@ -94,7 +94,7 @@ class PalCollectionViewCell: CardCollectionViewCell {
       self.pal = pal
       // set name label
       if let username = pal.user?.name.fragments.nameFields {
-        self.nameLabel.text = "\(username.first)'s down for"
+        self.nameLabel.text = "\(username.first.capitalized)'s down for"
       }
       
       // set pal image
@@ -116,12 +116,12 @@ class PalCollectionViewCell: CardCollectionViewCell {
       }
       
       // set activity label
-      self.activityLabel.text = pal.activity
+      self.activityLabel.text = pal.activity.capitalized
       
       // set date label
       if let date = pal.date {
         let dateRange = DateRange(start:Int(date.fragments.dateRangeFields.startDate ?? "NIL"), end:Int(date.fragments.dateRangeFields.endDate ?? "NIL"))
-        self.dateLabel.text = dateRange.displayDateFromNow() ?? ""
+        self.dateLabel.text =  (dateRange.displayDateFromNow() ?? "").capitalized
       }
       
       // set tap action

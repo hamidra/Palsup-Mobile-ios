@@ -25,7 +25,15 @@ fragment pictureFields on Picture {
   thumbnail
 }
 
+fragment educationFields on Education {
+  school
+  classOf : class
+}
 
+fragment workFields on Work {
+  organization,
+  title
+}
 
 mutation createUser($user:UserInput){
   createUser(user:$user) {
@@ -152,6 +160,13 @@ query getPalsByActivity($userId: ID, $activityFilter: ActivityFilterInput){
       name {
         ...nameFields
       }
+      work {
+        ...workFields
+      }
+      education {
+        ...educationFields
+      }
+      bio
       absolutePicture {
         ...pictureFields
       }

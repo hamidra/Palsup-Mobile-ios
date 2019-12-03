@@ -5,8 +5,8 @@ import Apollo
 public struct UserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(gender: Gender, name: NameInput, email: Swift.Optional<String?> = nil, cell: Swift.Optional<String?> = nil, password: Swift.Optional<String?> = nil, location: Swift.Optional<LocationInput?> = nil, dob: String, picture: Swift.Optional<PictureInput?> = nil) {
-    graphQLMap = ["gender": gender, "name": name, "email": email, "cell": cell, "password": password, "location": location, "dob": dob, "picture": picture]
+  public init(gender: Gender, name: NameInput, email: Swift.Optional<String?> = nil, cell: Swift.Optional<String?> = nil, password: Swift.Optional<String?> = nil, location: Swift.Optional<LocationInput?> = nil, work: Swift.Optional<[WorkInput?]?> = nil, education: Swift.Optional<[EducationInput?]?> = nil, dob: String, bio: Swift.Optional<String?> = nil, picture: Swift.Optional<PictureInput?> = nil) {
+    graphQLMap = ["gender": gender, "name": name, "email": email, "cell": cell, "password": password, "location": location, "work": work, "education": education, "dob": dob, "bio": bio, "picture": picture]
   }
 
   public var gender: Gender {
@@ -63,12 +63,39 @@ public struct UserInput: GraphQLMapConvertible {
     }
   }
 
+  public var work: Swift.Optional<[WorkInput?]?> {
+    get {
+      return graphQLMap["work"] as! Swift.Optional<[WorkInput?]?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "work")
+    }
+  }
+
+  public var education: Swift.Optional<[EducationInput?]?> {
+    get {
+      return graphQLMap["education"] as! Swift.Optional<[EducationInput?]?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "education")
+    }
+  }
+
   public var dob: String {
     get {
       return graphQLMap["dob"] as! String
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "dob")
+    }
+  }
+
+  public var bio: Swift.Optional<String?> {
+    get {
+      return graphQLMap["bio"] as! Swift.Optional<String?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "bio")
     }
   }
 
@@ -228,6 +255,58 @@ public struct CoordinatesInput: GraphQLMapConvertible {
   }
 }
 
+public struct WorkInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(title: Swift.Optional<String?> = nil, organization: String) {
+    graphQLMap = ["title": title, "organization": organization]
+  }
+
+  public var title: Swift.Optional<String?> {
+    get {
+      return graphQLMap["title"] as! Swift.Optional<String?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "title")
+    }
+  }
+
+  public var organization: String {
+    get {
+      return graphQLMap["organization"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "organization")
+    }
+  }
+}
+
+public struct EducationInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(school: String, `class`: Swift.Optional<String?> = nil) {
+    graphQLMap = ["school": school, "class": `class`]
+  }
+
+  public var school: String {
+    get {
+      return graphQLMap["school"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "school")
+    }
+  }
+
+  public var `class`: Swift.Optional<String?> {
+    get {
+      return graphQLMap["class"] as! Swift.Optional<String?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "class")
+    }
+  }
+}
+
 public struct PictureInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -336,22 +415,22 @@ public struct PalInput: GraphQLMapConvertible {
 public struct DateRangeInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(startDate: Swift.Optional<String?> = nil, endDate: Swift.Optional<String?> = nil) {
+  public init(startDate: String, endDate: String) {
     graphQLMap = ["startDate": startDate, "endDate": endDate]
   }
 
-  public var startDate: Swift.Optional<String?> {
+  public var startDate: String {
     get {
-      return graphQLMap["startDate"] as! Swift.Optional<String?>
+      return graphQLMap["startDate"] as! String
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "startDate")
     }
   }
 
-  public var endDate: Swift.Optional<String?> {
+  public var endDate: String {
     get {
-      return graphQLMap["endDate"] as! Swift.Optional<String?>
+      return graphQLMap["endDate"] as! String
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "endDate")
@@ -2305,11 +2384,11 @@ public final class SubmitVoteOnEventsWaitlistMutation: GraphQLMutation {
 
 public final class GetPalsByActivityQuery: GraphQLQuery {
   public let operationDefinition =
-    "query getPalsByActivity($userId: ID, $activityFilter: ActivityFilterInput) {\n  getPalsByActivity(userId: $userId, activityFilter: $activityFilter) {\n    __typename\n    id\n    user {\n      __typename\n      id\n      name {\n        __typename\n        ...nameFields\n      }\n      absolutePicture {\n        __typename\n        ...pictureFields\n      }\n    }\n    activity\n    date {\n      __typename\n      ...dateRangeFields\n    }\n    location {\n      __typename\n      ...locationFields\n    }\n    interested\n  }\n}"
+    "query getPalsByActivity($userId: ID, $activityFilter: ActivityFilterInput) {\n  getPalsByActivity(userId: $userId, activityFilter: $activityFilter) {\n    __typename\n    id\n    user {\n      __typename\n      id\n      name {\n        __typename\n        ...nameFields\n      }\n      work {\n        __typename\n        ...workFields\n      }\n      education {\n        __typename\n        ...educationFields\n      }\n      bio\n      absolutePicture {\n        __typename\n        ...pictureFields\n      }\n    }\n    activity\n    date {\n      __typename\n      ...dateRangeFields\n    }\n    location {\n      __typename\n      ...locationFields\n    }\n    interested\n  }\n}"
 
   public let operationName = "getPalsByActivity"
 
-  public var queryDocument: String { return operationDefinition.appending(NameFields.fragmentDefinition).appending(PictureFields.fragmentDefinition).appending(DateRangeFields.fragmentDefinition).appending(LocationFields.fragmentDefinition) }
+  public var queryDocument: String { return operationDefinition.appending(NameFields.fragmentDefinition).appending(WorkFields.fragmentDefinition).appending(EducationFields.fragmentDefinition).appending(PictureFields.fragmentDefinition).appending(DateRangeFields.fragmentDefinition).appending(LocationFields.fragmentDefinition) }
 
   public var userId: GraphQLID?
   public var activityFilter: ActivityFilterInput?
@@ -2442,6 +2521,9 @@ public final class GetPalsByActivityQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("name", type: .nonNull(.object(Name.selections))),
+          GraphQLField("work", type: .list(.object(Work.selections))),
+          GraphQLField("education", type: .list(.object(Education.selections))),
+          GraphQLField("bio", type: .scalar(String.self)),
           GraphQLField("absolutePicture", type: .object(AbsolutePicture.selections)),
         ]
 
@@ -2451,8 +2533,8 @@ public final class GetPalsByActivityQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID, name: Name, absolutePicture: AbsolutePicture? = nil) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name.resultMap, "absolutePicture": absolutePicture.flatMap { (value: AbsolutePicture) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID, name: Name, work: [Work?]? = nil, education: [Education?]? = nil, bio: String? = nil, absolutePicture: AbsolutePicture? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name.resultMap, "work": work.flatMap { (value: [Work?]) -> [ResultMap?] in value.map { (value: Work?) -> ResultMap? in value.flatMap { (value: Work) -> ResultMap in value.resultMap } } }, "education": education.flatMap { (value: [Education?]) -> [ResultMap?] in value.map { (value: Education?) -> ResultMap? in value.flatMap { (value: Education) -> ResultMap in value.resultMap } } }, "bio": bio, "absolutePicture": absolutePicture.flatMap { (value: AbsolutePicture) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -2479,6 +2561,33 @@ public final class GetPalsByActivityQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue.resultMap, forKey: "name")
+          }
+        }
+
+        public var work: [Work?]? {
+          get {
+            return (resultMap["work"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Work?] in value.map { (value: ResultMap?) -> Work? in value.flatMap { (value: ResultMap) -> Work in Work(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Work?]) -> [ResultMap?] in value.map { (value: Work?) -> ResultMap? in value.flatMap { (value: Work) -> ResultMap in value.resultMap } } }, forKey: "work")
+          }
+        }
+
+        public var education: [Education?]? {
+          get {
+            return (resultMap["education"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Education?] in value.map { (value: ResultMap?) -> Education? in value.flatMap { (value: ResultMap) -> Education in Education(unsafeResultMap: value) } } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [Education?]) -> [ResultMap?] in value.map { (value: Education?) -> ResultMap? in value.flatMap { (value: Education) -> ResultMap in value.resultMap } } }, forKey: "education")
+          }
+        }
+
+        public var bio: String? {
+          get {
+            return resultMap["bio"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "bio")
           }
         }
 
@@ -2537,6 +2646,114 @@ public final class GetPalsByActivityQuery: GraphQLQuery {
             public var nameFields: NameFields {
               get {
                 return NameFields(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+          }
+        }
+
+        public struct Work: GraphQLSelectionSet {
+          public static let possibleTypes = ["Work"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(WorkFields.self),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(organization: String, title: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Work", "organization": organization, "title": title])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var workFields: WorkFields {
+              get {
+                return WorkFields(unsafeResultMap: resultMap)
+              }
+              set {
+                resultMap += newValue.resultMap
+              }
+            }
+          }
+        }
+
+        public struct Education: GraphQLSelectionSet {
+          public static let possibleTypes = ["Education"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLFragmentSpread(EducationFields.self),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(school: String, classOf: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Education", "school": school, "classOf": classOf])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var fragments: Fragments {
+            get {
+              return Fragments(unsafeResultMap: resultMap)
+            }
+            set {
+              resultMap += newValue.resultMap
+            }
+          }
+
+          public struct Fragments {
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public var educationFields: EducationFields {
+              get {
+                return EducationFields(unsafeResultMap: resultMap)
               }
               set {
                 resultMap += newValue.resultMap
@@ -7009,6 +7226,106 @@ public struct PictureFields: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "thumbnail")
+    }
+  }
+}
+
+public struct EducationFields: GraphQLFragment {
+  public static let fragmentDefinition =
+    "fragment educationFields on Education {\n  __typename\n  school\n  classOf: class\n}"
+
+  public static let possibleTypes = ["Education"]
+
+  public static let selections: [GraphQLSelection] = [
+    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+    GraphQLField("school", type: .nonNull(.scalar(String.self))),
+    GraphQLField("class", alias: "classOf", type: .scalar(String.self)),
+  ]
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(school: String, classOf: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "Education", "school": school, "classOf": classOf])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var school: String {
+    get {
+      return resultMap["school"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "school")
+    }
+  }
+
+  public var classOf: String? {
+    get {
+      return resultMap["classOf"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "classOf")
+    }
+  }
+}
+
+public struct WorkFields: GraphQLFragment {
+  public static let fragmentDefinition =
+    "fragment workFields on Work {\n  __typename\n  organization\n  title\n}"
+
+  public static let possibleTypes = ["Work"]
+
+  public static let selections: [GraphQLSelection] = [
+    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+    GraphQLField("organization", type: .nonNull(.scalar(String.self))),
+    GraphQLField("title", type: .scalar(String.self)),
+  ]
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(organization: String, title: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "Work", "organization": organization, "title": title])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var organization: String {
+    get {
+      return resultMap["organization"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "organization")
+    }
+  }
+
+  public var title: String? {
+    get {
+      return resultMap["title"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "title")
     }
   }
 }

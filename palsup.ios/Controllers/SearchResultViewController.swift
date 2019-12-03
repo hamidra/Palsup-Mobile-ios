@@ -47,25 +47,48 @@ class SearchResultViewController: UIViewController {
     eventsCollectionView.register(EventCollectionViewCell.self, forCellWithReuseIdentifier: "EventCollectionViewCell")
     
     
-    //query the results
-    if let filter = searchFilter {
+    if let filter = searchFilter, let activity = filter.activity {
       print("\(filter.activity!) \n from: \(filter.date?.startDate) \n to: \(filter.date?.endDate)")
-      let gqlActivityFilter = ActivityFilterInput(activity: filter.activity)
+
+      
+      // reset currentPal
+      SignedInUser.currentPal = nil
+      
+      // create a pal
+      
+      // ToDO: We assume user only gets to this View if already is signed in, If it is not signed in it should be redirected to signin page
+      let dateRangeInput:DateRangeInput? = (filter.date != nil && filter.date?.startDate != nil && filter.date?.endDate != nil) ? DateRangeInput(startDate: filter.date!.startDate!.toISO(), endDate: filter.date!.endDate!.toISO()) : nil
+      let locationInput = LocationInput(address: SignedInUser.location.address, city: SignedInUser.location.city, state: SignedInUser.location.state, coordinates: nil)
+      let palInput = PalInput(userId: SignedInUser.Identity.id!, activity: activity, location: locationInput, date: dateRangeInput)
+      
+      let gqlCreatePalMutation = CreatePalMutation(pal: palInput)
+      GqlClient.shared.client.perform(mutation: gqlCreatePalMutation) {
+        result in
+        switch result {
+        case .success(let gqlResult):
+          SignedInUser.currentPal = gqlResult.data?.createPal
+        case .failure(let error):
+          print(error)
+        }
+      }
+      
+      let gqlActivityFilter = ActivityFilterInput(activity: activity, date: dateRangeInput, location: locationInput)
       
       // Query Pals by Activity
-      let gqlGetPalsByActivityQuery = GetPalsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
+      let gqlGetPalsByActivityQuery = GetPalsByActivityQuery(userId: SignedInUser.Identity.id, activityFilter: gqlActivityFilter)
+      
       GqlClient.shared.client.fetch(query: gqlGetPalsByActivityQuery) {
         result in
         switch result {
         case .success(let gqlResult):
-          self.palsByActivity = gqlResult.data?.getPalsByActivity
+          self.palsByActivity = gqlResult.data?.getPalsByActivity?.filter({$0?.user != nil})
         case .failure(let error):
           print(error)
         }
       }
       
       // Query Events by Activity
-      let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: nil, activityFilter:gqlActivityFilter)
+      let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: SignedInUser.Identity.id, activityFilter:gqlActivityFilter)
       GqlClient.shared.client.fetch(query: gqlGetEventsByActivityQuery){
         result in
         switch result {

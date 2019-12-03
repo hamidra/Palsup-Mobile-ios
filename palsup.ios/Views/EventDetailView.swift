@@ -22,29 +22,27 @@ class EventDetailView: UIView {
   lazy var eventImage: UIImageView = {
     let image = UIImageView()
     image.backgroundColor = UIColor.clear
-    image.contentMode = .scaleAspectFit
+    image.contentMode = .scaleAspectFill
     return image
   }()
   lazy var exitButton: UIButton = {
     let button = UIButton()
-    button.setTitle("Dismiss", for: .normal)
-    button.setTitleColor(.red, for: .normal)
+    button.setBackgroundImage(UIImage(named: "downArrow"), for: .normal)
     button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
     return button
   }()
-  lazy var imageStack: UIStackView = {
-    let stack = UIStackView(arrangedSubviews: [eventImage, exitButton])
-    stack.alignment = .trailing
-    stack.distribution = .fill
-    stack.contentMode = .bottomRight
-    stack.axis = .vertical
-    return stack
+  lazy var descriptionTextView: UITextView = {
+    let textView = UITextView()
+    textView.isScrollEnabled = false
+    textView.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    textView.textAlignment = .left
+    textView.textColor = .black
+    return textView
   }()
   lazy var eventInfoStack: UIStackView = {
-    let stack = UIStackView(arrangedSubviews: [activityLabel])
+    let stack = UIStackView(arrangedSubviews: [activityLabel, descriptionTextView])
     stack.alignment = .leading
-    stack.distribution = .fill
-    stack.contentMode = .scaleToFill
+    stack.spacing = 10
     stack.axis = .vertical
     return stack
   }()
@@ -64,32 +62,35 @@ class EventDetailView: UIView {
   
   private func setupView() {
     backgroundColor = .clear
-    addSubview(imageStack)
+    addSubview(eventImage)
+    addSubview(exitButton)
     addSubview(eventInfoStack)
     setupLayout()
   }
   
   private func setupLayout() {
     eventImage.snp.makeConstraints { (make) -> Void in
-      make.top.equalTo(imageStack).offset(0)
-      make.left.equalTo(imageStack).offset(0)
-      make.right.equalTo(imageStack).offset(0)
-      make.height.greaterThanOrEqualTo(self).multipliedBy(0.5)
-    }
-    exitButton.snp.makeConstraints { (make) -> Void in
-      make.top.equalTo(eventImage.snp.bottom).offset(-20)
-      make.right.equalTo(imageStack).offset(-20)
-    }
-    imageStack.snp.makeConstraints { (make) -> Void in
       make.top.equalTo(self).offset(20)
       make.left.equalTo(self).offset(20)
       make.right.equalTo(self).offset(-20)
+      make.height.equalTo(eventImage.snp.width).multipliedBy(4.0/3.0)
+    }
+    exitButton.snp.makeConstraints { (make) -> Void in
+       make.top.equalTo(eventImage.snp.bottom).offset(-30)
+       make.right.equalTo(eventImage).offset(-30)
+       make.width.equalTo(60)
+       make.height.equalTo(exitButton.snp.width)
+    }
+    descriptionTextView.translatesAutoresizingMaskIntoConstraints  = false;
+    descriptionTextView.snp.makeConstraints{ (make) -> Void in
+      make.left.equalTo(eventInfoStack)
+      make.right.equalTo(eventInfoStack)
     }
     eventInfoStack.snp.makeConstraints { (make) -> Void in
-      make.top.equalTo(imageStack.snp.bottom).offset(20)
-      make.bottom.equalTo(self).offset(-100)
+      make.top.equalTo(eventImage.snp.bottom).offset(20)
       make.left.equalTo(self).offset(20)
       make.right.equalTo(self).offset(-20)
+      make.bottom.equalTo(self)
     }
   }
   
@@ -123,6 +124,9 @@ class EventDetailView: UIView {
           }
         }
       }
+      
+      // set event description
+      self.descriptionTextView.text = "Entrepreneur and businessman Bill Gates and his business partner Paul Allen founded and built the world's largest software business, Microsoft, through technological innovation, keen business strategy and aggressive business tactics. In the process, Gates became one of the richest men in the world. In February 2014, Gates announced that he was stepping down as Microsoft's chairman to focus on charitable work at his foundation, the Bill and Melinda Gates Foundation."
     }
     //set exit action
     self.exitAction = exitAction
