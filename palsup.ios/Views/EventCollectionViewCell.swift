@@ -109,6 +109,8 @@ class EventCollectionViewCell: CardCollectionViewCell {
       if let date = event.date {
         let dateRange = DateRange(start:Int(date.fragments.dateRangeFields.startDate ?? "NIL"), end:Int(date.fragments.dateRangeFields.endDate ?? "NIL"))
         self.dateLabel.text = (dateRange.displayDateFromNow() ?? "").capitalized
+      } else {
+        self.dateLabel.text = "Anytime"
       }
       
       // set tap action

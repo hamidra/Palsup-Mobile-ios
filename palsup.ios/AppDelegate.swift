@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+      UIButton.appearance().layer.borderWidth = 10
+      
+      // Use Firebase library to configure APIs
+      FirebaseApp.configure()
+      Messaging.messaging().delegate = self
+      
+      LocationManager.current.start()
+      PushNotificationProvider.current.registerForPushNotifications()
+      
+      /*// Check if launched from notification
+      let notificationOption = launchOptions?[.remoteNotification]
 
-        return true
+      // 1
+      if let notification = notificationOption as? [String: AnyObject],
+        let aps = notification["aps"] as? [String: AnyObject] {
+        
+        (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
+      }*/
+      SignedInUser.fetchNotifications();
+      return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -33,11 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+      SignedInUser.fetchNotifications()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
+  
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -73,6 +94,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    // Mark: - PushNotification support
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      // ToDO: might want to remove this log. DeviceToken is PII and exposing it might have security implications
+      print("Device Token: \(token)")
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      print("Failed to register: \(error)")
+    }
+  
+    func application(
+      _ application: UIApplication,
+      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+      fetchCompletionHandler completionHandler:
+      @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+      guard let notification = userInfo as? [String: AnyObject], let aps = notification["aps"] as? [String: AnyObject] else {
+        completionHandler(.failed)
+        return
+      }
+      print("running ---> \n \(aps)")
+      var apnsNotification = APNSNotification(info: notification)
+      SignedInUser.updateNotifications(notification: apnsNotification)
+      /*print("event \n \(apnsNotification.data[ApnsFieldNames.event] as? Event)")
+      print("palId \n \(apnsNotification.data[ApnsFieldNames.palId])")
+      print("eventId \n \(apnsNotification.data[ApnsFieldNames.eventId])")
+      print("intresetedUser \n \(apnsNotification.data[ApnsFieldNames.interestedUserId])")
+      print("message \n \(apnsNotification.data[ApnsFieldNames.message] as? Message)")
+      print("newMember \n \(apnsNotification.data[ApnsFieldNames.memberUser] as? User)")*/
+      completionHandler(.newData)
+      return
+    }
 
     // MARK: - Core Data Saving support
 
@@ -89,6 +150,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
+
+extension AppDelegate : MessagingDelegate {
+  // [START refresh_token]
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    print("Firebase registration token: \(fcmToken)")
+    
+    let dataDict:[String: String] = ["token": fcmToken]
+    NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    // TODO: If necessary send token to application server.
+    // Note: This callback is fired at each app startup and whenever a new token is generated.
+  }
+  
+  // [END refresh_token]
+  // [START ios_10_data_message]
+  // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+  // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+  func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+    print("Received data message: \(remoteMessage.appData)")
+  }
+  // [END ios_10_data_message]
+}
+
 

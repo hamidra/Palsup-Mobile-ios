@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>918296511100-athgpu7m11dta2bg5h8hk9vpd92oac2s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.918296511100-athgpu7m11dta2bg5h8hk9vpd92oac2s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDozV0oCYwZGccJCwHmXBYrPnkfahYkxpA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>918296511100</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.palsup.palsup</string>
+	<key>PROJECT_ID</key>
+	<string>palsup-b8e5e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>palsup-b8e5e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:918296511100:ios:92969a87a515da9b7abff9</string>
+	<key>DATABASE_URL</key>
+	<string>https://palsup-b8e5e.firebaseio.com</string>
+</dict>
+</plist>

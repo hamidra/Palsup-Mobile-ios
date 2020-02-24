@@ -22,8 +22,8 @@ class EventInfoViewController: UIViewController {
     return scrollView
   }()
   
-  lazy var actionToolbar: VoteBarView = {
-    let toolbar = VoteBarView()
+  lazy var actionToolbar: LikeBarView = {
+    let toolbar = LikeBarView()
     toolbar.acceptAction = self.acceptAction
     toolbar.rejectAction = self.rejectAction
     toolbar.backgroundColor = .clear
@@ -62,8 +62,7 @@ class EventInfoViewController: UIViewController {
     actionToolbar.snp.makeConstraints { (make)->Void in
       make.left.equalTo(self.view)
       make.right.equalTo(self.view)
-      make.bottom.equalTo(self.view)
-      make.height.equalTo(self.view).multipliedBy(0.1)
+      make.bottom.equalTo(self.view).inset(30)
     }
   }
   
@@ -76,17 +75,20 @@ class EventInfoViewController: UIViewController {
   }
   
   func acceptAction() {
-    if let event=self.event, let currentUserId=SignedInUser.Identity.id {
+    if let event=self.event, let currentUserId=SignedInUser.Identity?.id {
       let addToEventsWaitlistMutation = AddToEventsWaitlistMutation(eventId: event.id, userId: currentUserId)
       GqlClient.shared.client.perform(mutation: addToEventsWaitlistMutation) {
         result in
         switch result {
-        case .success(let gqlResult):
+        case .success:
           print("added to the event's Waitlist")
         case .failure(let error):
           print(error)
         }
       }
+    } else {
+      //ToDO: redirect to signIn page
+      print("No user is logged in")
     }
     self.dismissVC()
   }

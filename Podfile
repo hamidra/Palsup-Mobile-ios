@@ -12,6 +12,15 @@ target 'palsup.ios' do
   pod 'SnapKit', '~> 5.0'
   pod 'PromisesSwift'
   pod 'MessageKit'
+  pod 'CropViewController'
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod 'Eureka'
+  
+  # Add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+
+  # Add the pod for Firebase Cloud Messaging
+  pod 'Firebase/Messaging'
   
   target 'palsup.iosTests' do
     inherit! :search_paths

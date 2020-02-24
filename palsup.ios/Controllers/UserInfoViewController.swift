@@ -1,17 +1,24 @@
 //
-//  PalDetailViewController.swift
+//  UserInfoViewController.swift
 //  palsup.ios
 //
-//  Created by Hamid Alipour on 10/31/19.
-//  Copyright © 2019 Deepnosis. All rights reserved.
+//  Created by Hamid Alipour on 1/30/20.
+//  Copyright © 2020 Deepnosis. All rights reserved.
 //
 
 import UIKit
 import SnapKit
+import Promises
 
 class UserInfoViewController: UIViewController {
-
-  var pal:GetPalsByActivityQuery.Data.GetPalsByActivity?
+  
+  var user: User?
+  var eventId: String?
+  var isWaitlist: Bool = false {
+    didSet {
+      actionToolbar.isHidden = !isWaitlist
+    }
+  }
   
   lazy var userDetailView: UserDetailView = {
     return UserDetailView()
@@ -34,12 +41,11 @@ class UserInfoViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
     setupView()
   }
   
   func setupView(){
-    userDetailView.configure(with: pal?.user, exitAction: dismissVC)
+    userDetailView.configure(with: user, exitAction: dismissVC)
     self.view.addSubview(scrollView)
     self.view.addSubview(actionToolbar)
     setupLayout()
@@ -64,8 +70,7 @@ class UserInfoViewController: UIViewController {
     actionToolbar.snp.makeConstraints { (make)->Void in
       make.left.equalTo(self.view)
       make.right.equalTo(self.view)
-      make.bottom.equalTo(self.view)
-      make.height.equalTo(self.view).multipliedBy(0.1)
+      make.bottom.equalTo(self.view).inset(30)
     }
   }
   
@@ -74,25 +79,40 @@ class UserInfoViewController: UIViewController {
   }
   
   func rejectAction() {
-    self.dismissVC()
+    if let eid = self.eventId, let uid = self.user?.id {
+      submitVoteOnEventsWaitlist(eventId: eid, waitlistUserId: uid, vote: false).then({ eventId in
+        if eventId == nil {
+          print("mutation returned nil. Vote submit was not successful.")
+        }
+        self.dismissVC()
+      })
+    }
   }
   
   func acceptAction() {
-    if let pal=self.pal, let currentPal=SignedInUser.currentPal {
-      let addToPalsInterestedMutation = AddToPalsInterestedMutation(palId: pal.id, interestedPalId: currentPal.id)
-      GqlClient.shared.client.perform(mutation: addToPalsInterestedMutation) {
-        result in
+    if let eid = self.eventId, let uid = self.user?.id {
+      submitVoteOnEventsWaitlist(eventId: eid, waitlistUserId: uid, vote: true).then({ eventId in
+        if eventId == nil {
+          print("mutation returned nil. Vote submit was not successful.")
+        }
+        self.dismissVC()
+      })
+    }
+  }
+}
+
+extension UserInfoViewController {
+  func submitVoteOnEventsWaitlist(eventId: String, waitlistUserId: String, vote: Bool) -> Promise<String?> {
+    return Promise<String?> { fulfill, reject in
+      var submitVoteOnEventsWaitlistMutation = SubmitVoteOnEventsWaitlistMutation(eventId: eventId, waitlistUserId: waitlistUserId, vote: vote)
+      GqlClient.shared.client.perform(mutation: submitVoteOnEventsWaitlistMutation) { result in
         switch result {
         case .success(let gqlResult):
-          if gqlResult.data?.addToPalsInterested == nil {
-            print("could not find the pal")
-          }
+          fulfill(gqlResult.data?.submitVoteOnEventsWaitlist)
         case .failure(let error):
-          print(error)
+          reject(error)
         }
-        
       }
     }
-    self.dismissVC()
   }
 }

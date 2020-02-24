@@ -432,7 +432,7 @@ extension EventConversationViewController {
         }
       default:
         // ToDO: support other message content types such as image, location and such
-        reject(GenericErrors("Message content is not supported"))
+        reject(GenericError("Message content is not supported"))
       }
     }
   }

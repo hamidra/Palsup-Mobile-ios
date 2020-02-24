@@ -9,6 +9,13 @@
 import Foundation
 import SwiftDate
 
+enum DateLiteral:Int {
+  case soon = 0
+  case today = 1
+  case week = 2
+  case weekend = 3
+}
+
 class DateRange {
   var startDate:Date?
   var endDate:Date?
@@ -36,15 +43,15 @@ class DateRange {
     }
   }
   
-  static func getDateRangeFromString(_ date:String?)->DateRange?{
-    switch date?.lowercased() {
-    case "soon":
+  static func getDateRangeFromLiteral(_ date:DateLiteral?)->DateRange?{
+    switch date {
+    case .soon:
       return DateRange(start:Date(), end:Date()+5.hours)
-    case "today":
+    case .today:
       return DateRange(start:Date(), end:Date().dateAt(.endOfDay))
-    case "week":
+    case .week:
       return DateRange(start:Date(), end:Date().dateAt(.endOfWeek))
-    case "weekend":
+    case .weekend:
       return DateRange(start:Date().dateAt(.startOfWeek)+5.days, end: Date().dateAt(.startOfWeek)+8.days)
     default:
       return nil

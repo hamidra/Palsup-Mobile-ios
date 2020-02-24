@@ -10,29 +10,20 @@ import UIKit
 
 @IBDesignable class SearchButton: UIButton {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    @IBInspectable var borderColor: UIColor = UIColor.clear {
-        didSet {
-            layer.borderColor = borderColor.cgColor
-        }
-    }
-    
-    @IBInspectable var borderWidth: Int = 0 {
-        didSet {
-            layer.borderWidth = CGFloat(borderWidth)
-        }
-    }
-    
-    @IBInspectable var cornerWidthRatio: Float = 0 {
-        didSet{
-            layer.cornerRadius = bounds.size.width * CGFloat(cornerWidthRatio)
-        }
-    }
-    
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    setupView()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setupView()
+  }
+  
+  func setupView() {
+    self.setTitleColor(UIColor.systemBlue, for: .normal)
+    layer.borderColor = UIColor.systemBlue.cgColor
+    layer.borderWidth = 1
+    layer.cornerRadius = 10
+  }
 }

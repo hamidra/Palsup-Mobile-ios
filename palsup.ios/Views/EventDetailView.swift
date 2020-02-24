@@ -14,7 +14,7 @@ class EventDetailView: UIView {
 
   lazy var activityLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+    label.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.titleFontSize), weight: .bold)
     label.textAlignment = .left
     label.textColor = .black
     return label
@@ -34,7 +34,7 @@ class EventDetailView: UIView {
   lazy var descriptionTextView: UITextView = {
     let textView = UITextView()
     textView.isScrollEnabled = false
-    textView.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    textView.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.contentFontSize), weight: .regular)
     textView.textAlignment = .left
     textView.textColor = .black
     return textView
@@ -112,6 +112,8 @@ class EventDetailView: UIView {
         let url = URL(string: pictureUrl)
         let downloader = KingfisherManager.shared.downloader //Downloader needs to be configured to accept untrusted certificates
         downloader.trustedHosts = Set(["localhost"])
+        
+        //ToDo: set a placeholder for the event Image
         let placeholder = UIImage(named: "46")
         self.eventImage.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
         {

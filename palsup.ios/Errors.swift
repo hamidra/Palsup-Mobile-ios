@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenericErrors : Error {
+class GenericError : Error {
   var message:String = ""
   var kind:Kind = .generic
   

@@ -23,7 +23,6 @@ class PalListViewController: UIViewController {
 
   @IBOutlet weak var palsTableView: UITableView!
   
-  var userId = "5ddc223c33cbee51992efdb7"
   var palList: [PalListItem] = [] {
     didSet {
       palsTableView.reloadData()
@@ -62,10 +61,15 @@ class PalListViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
-    fetchPalsForUser(userId: self.userId).then({pals in
-      self.palList = pals
-    })
+    if let uid = SignedInUser.Identity?.id {
+      fetchPalsForUser(userId: uid).then({pals in
+        self.palList = pals
+      })
+    }
+    else {
+      //ToDO: redirect to signIn page
+      print("No user is logged in")
+    }
   }
 }
 
@@ -77,8 +81,18 @@ extension PalListViewController : UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let palListTabelViewCell = tableView.dequeueReusableCell(withIdentifier: "PalListTableViewCell", for: indexPath)
+    
+    // Set the activity label
     palListTabelViewCell.textLabel?.text = palList[indexPath.row].pal.activity
-    palListTabelViewCell.detailTextLabel?.text = "Date?!"
+    
+    // Set date label
+    if let date = palList[indexPath.row].pal.date {
+      let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
+      palListTabelViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
+    } else {
+      palListTabelViewCell.detailTextLabel?.text = "Anytime"
+    }
+    
     return palListTabelViewCell
   }
   
@@ -117,6 +131,7 @@ extension PalListViewController {
                   return PalListItem(pal: pal, notifications: notifications)
                 } catch {
                   print("Error happened in deserialization of notificationItem\(item), error:\(error)")
+                  return nil
                 }
               }
               return nil
@@ -151,6 +166,7 @@ extension PalListViewController {
                   return PalListItem(pal: pal)
                 } catch {
                   print("Error happened in deserialization of notificationItem\(item), error:\(error)")
+                  return nil
                 }
               }
               return nil

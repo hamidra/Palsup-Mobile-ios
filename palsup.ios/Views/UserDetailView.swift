@@ -11,31 +11,56 @@ import Kingfisher
 import SnapKit
 
 class UserDetailView: UIView {
+  var user: User?
+  var exitAction: (()->Void)?
+  
   lazy var nameLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+    label.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.titleFontSize), weight: .bold)
     label.textAlignment = .left
     label.textColor = .black
     return label
   }()
   lazy var workLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    label.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.subtitleFontSize), weight: .regular)
     label.textAlignment = .left
     label.textColor = .black
     return label
   }()
+  lazy var workIcon: UIImageView = {
+    let icon = UIImageView(image: UIImage(named: "work"))
+    icon.contentMode = .scaleAspectFit
+    return icon
+  }()
+  lazy var workStack: UIStackView = {
+    let stackView = UIStackView(arrangedSubviews: [workIcon, workLabel])
+    stackView.axis = .horizontal
+    stackView.spacing = 5
+    return stackView
+  }()
   lazy var educationLabel: UILabel = {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    label.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.subtitleFontSize), weight: .regular)
     label.textAlignment = .left
     label.textColor = .black
     return label
+  }()
+  lazy var educationIcon: UIImageView = {
+    let icon = UIImageView(image: UIImage(named: "education"))
+    icon.contentMode = .scaleAspectFit
+    return icon
+  }()
+  lazy var educationStack: UIStackView = {
+    let stackView = UIStackView(arrangedSubviews: [educationIcon, educationLabel])
+    stackView.axis = .horizontal
+    stackView.spacing = 5
+    return stackView
   }()
   lazy var bioTextView: UITextView = {
     let textView = UITextView()
     textView.isScrollEnabled = false
-    textView.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    textView.font = UIFont.systemFont(ofSize: CGFloat(UIStyle.contentFontSize), weight: .regular)
     textView.textAlignment = .left
     textView.textColor = .black
     return textView
@@ -53,16 +78,13 @@ class UserDetailView: UIView {
     return button
   }()
   lazy var userInfoStack: UIStackView = {
-    let stack = UIStackView(arrangedSubviews: [nameLabel, educationLabel, workLabel, bioTextView])
+    let stack = UIStackView(arrangedSubviews: [nameLabel, educationStack, workStack, bioTextView])
     stack.alignment = .leading
     stack.spacing = 10
     stack.axis = .vertical
     return stack
   }()
-  
-  var user: GetPalsByActivityQuery.Data.GetPalsByActivity.User?
-  var exitAction: (()->Void)?
-  
+    
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupView()
@@ -89,6 +111,16 @@ class UserDetailView: UIView {
       make.right.equalTo(self).offset(-20)
       make.height.equalTo(userImage.snp.width).multipliedBy(4.0/3.0)
     }
+    educationIcon.translatesAutoresizingMaskIntoConstraints = false;
+    educationIcon.snp.makeConstraints { (make) -> Void in
+      make.width.equalTo(self).multipliedBy(UIStyle.iconWidthRatioSmall)
+      make.height.equalTo(educationIcon.snp.width)
+    }
+    workIcon.translatesAutoresizingMaskIntoConstraints  = false;
+    workIcon.snp.makeConstraints { (make) -> Void in
+      make.width.equalTo(self).multipliedBy(UIStyle.iconWidthRatioSmall)
+      make.height.equalTo(workIcon.snp.width)
+    }
     bioTextView.translatesAutoresizingMaskIntoConstraints  = false;
     bioTextView.snp.makeConstraints{ (make) -> Void in
       make.left.equalTo(userInfoStack)
@@ -98,7 +130,7 @@ class UserDetailView: UIView {
     exitButton.snp.makeConstraints { (make) -> Void in
       make.top.equalTo(userImage.snp.bottom).offset(-30)
       make.right.equalTo(userImage).offset(-30)
-      make.width.equalTo(60)
+      make.width.equalTo(self).multipliedBy(UIStyle.buttonWidthRatioMedium)
       make.height.equalTo(exitButton.snp.width)
     }
     userInfoStack.translatesAutoresizingMaskIntoConstraints = false
@@ -116,42 +148,30 @@ class UserDetailView: UIView {
     }
   }
   
-  func configure(with oUser: GetPalsByActivityQuery.Data.GetPalsByActivity.User?, exitAction:(()->Void)?) {
+  func configure(with oUser: User?, exitAction:(()->Void)?) {
     if let user = oUser {
       self.user = user
       // set name label
-      let username = user.name.fragments.nameFields
-      self.nameLabel.text = username.first.capitalized
+      if let firstName = user.name?.first {
+        self.nameLabel.text = firstName.capitalized
+      }
       
       // set education label
-      if let educations = user.education, educations.count > 0, let education = educations[0]?.fragments.educationFields  {
-        self.educationLabel.text = "\(education.school.capitalized) \(education.classOf?.capitalized ?? "")"
+      if let educations = user.education, educations.count > 0 {
+        self.educationLabel.text = "\(educations[0].school?.capitalized ?? "") \(educations[0].classOf?.capitalized ?? "")"
       }
       
       // set work label
-      if let works = user.work, works.count > 0, let work = works[0]?.fragments.workFields {
-        self.workLabel.text = "\(work.title?.capitalized ?? "") \(work.organization.capitalized)"
+      if let works = user.work, works.count > 0 {
+        self.workLabel.text = "\(works[0].title?.capitalized ?? "") \(works[0].organization?.capitalized ?? "")"
       }
       
       // set bio label
       self.bioTextView.text = "Entrepreneur and businessman Bill Gates and his business partner Paul Allen founded and built the world's largest software business, Microsoft, through technological innovation, keen business strategy and aggressive business tactics. In the process, Gates became one of the richest men in the world. In February 2014, Gates announced that he was stepping down as Microsoft's chairman to focus on charitable work at his foundation, the Bill and Melinda Gates Foundation."
       
       // set user image
-      if let pictureUrl = user.absolutePicture?.fragments.pictureFields.medium {
-        let url = URL(string: pictureUrl)
-        let downloader = KingfisherManager.shared.downloader //Downloader needs to be configured to accept untrusted certificates
-        downloader.trustedHosts = Set(["localhost"])
-        let placeholder = UIImage(named: "46")
-        self.userImage.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
-        {
-          result in
-          switch result {
-          case .success(let value):
-            print("Task done for: \(value.source.url?.absoluteString ?? "")")
-          case .failure(let error):
-            print("Job failed: \(error.localizedDescription)")
-          }
-        }
+      if let pictureUrl = user.absolutePicture?.medium {
+        ImageDownloader.shared.setImage(imageView: self.userImage, url: pictureUrl)
       }
     }
     //set exit action

@@ -7,169 +7,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9F53FBD2-0D04-45AB-8ACA-7017D19E874E"
+            uuid = "3B6C4048-30C7-47D4-96C7-E2A4EEBD5717"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/EventConversationViewController.swift"
-            timestampString = "595984476.48376"
+            filePath = "palsup.ios/Models/SignedInUser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
-            landmarkName = "inputBar(_:didPressSendButtonWith:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "SignIn(username:pass:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "129AC2C5-2CB5-4212-84D7-4863ED461C45"
+            uuid = "BFF32E25-9BD1-47C9-9C84-BE81DD13BC53"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/EventConversationViewController.swift"
-            timestampString = "595984476.483942"
+            filePath = "palsup.ios/Models/APNSNotification.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "inputBar(_:didPressSendButtonWith:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "init(info:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DAFE1535-30BA-4FFB-ADC6-70637E6BB2EA"
+            uuid = "CE6EC9DB-3D6A-4338-9587-F938A68C2F56"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/EventConversationViewController.swift"
-            timestampString = "595984476.484061"
+            filePath = "palsup.ios/Models/APNSNotification.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "messageForItem(at:in:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
-         <BreakpointContent
-            uuid = "2032058F-0B26-41BF-9087-BB53E3BD7051"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            symbolName = "UIApplicationEndBackgroundTaskError"
-            moduleName = "">
-            <Locations>
-               <Location
-                  uuid = "2032058F-0B26-41BF-9087-BB53E3BD7051 - f2e10d4c094b9b69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UIApplicationEndBackgroundTaskError"
-                  moduleName = "UIKitCore"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "309B91C5-5980-47A7-9E35-46BE49EE5521"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/UserInfoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "acceptAction()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "309B91C5-5980-47A7-9E35-46BE49EE5521 - a29f0f7404c3aa74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Apollo.GraphQLResult&lt;palsup_ios.AddToPalsInterestedMutation.Data&gt;, Swift.Error&gt;) -&gt; () in palsup_ios.UserInfoViewController.acceptAction() -&gt; ()"
-                  moduleName = "palsup.ios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/UserInfoViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "309B91C5-5980-47A7-9E35-46BE49EE5521 - a29f0f7404c3aa74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Apollo.GraphQLResult&lt;palsup_ios.AddToPalsInterestedMutation.Data&gt;, Swift.Error&gt;) -&gt; () in palsup_ios.UserInfoViewController.acceptAction() -&gt; ()"
-                  moduleName = "palsup.ios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/UserInfoViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "77">
-               </Location>
-               <Location
-                  uuid = "309B91C5-5980-47A7-9E35-46BE49EE5521 - a29f0f7404c3aa74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Apollo.GraphQLResult&lt;palsup_ios.AddToPalsInterestedMutation.Data&gt;, Swift.Error&gt;) -&gt; () in palsup_ios.UserInfoViewController.acceptAction() -&gt; ()"
-                  moduleName = "palsup.ios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/UserInfoViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "669">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F78A0B2-D97B-451C-92D2-EAB70E1DF515"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/UserInfoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "acceptAction()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "init(info:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "78F07D81-A352-4B32-BBB8-423FECE6E758"
+            uuid = "DED42AA8-9012-4A0A-9116-4E93A093669C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/UserInfoViewController.swift"
+            filePath = "palsup.ios/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "setupLayout()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33B5C9C4-C32B-4413-B4EC-561855EE4177"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palsup.ios/Models/APNSNotification.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "init(info:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AB03214-E05E-41AF-B5FF-C8A7B231858D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palsup.ios/Models/SignedInUser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "SignIn(username:pass:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CECB024-3B2E-4E2B-8FD3-51F7C86D4C3C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palsup.ios/Models/SignedInUser.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "SignedInUser"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1102A76-A8C2-43A7-8710-EBF0D62EB0E1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palsup.ios/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

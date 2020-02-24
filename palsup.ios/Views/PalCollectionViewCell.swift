@@ -12,6 +12,10 @@ import SwiftDate
 import SnapKit
 
 class PalCollectionViewCell: CardCollectionViewCell {
+  
+  var pal:Pal?
+  var tapAction:((Pal?)->Void)?
+  
   lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -47,11 +51,7 @@ class PalCollectionViewCell: CardCollectionViewCell {
     stack.axis = .vertical
     return stack
   }()
-  
-  var pal:GetPalsByActivityQuery.Data.GetPalsByActivity?
-  
-  var tapAction:((GetPalsByActivityQuery.Data.GetPalsByActivity?)->Void)?
-  
+    
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupView()
@@ -89,18 +89,21 @@ class PalCollectionViewCell: CardCollectionViewCell {
     }
   }
   
-  func configure(with oPal: GetPalsByActivityQuery.Data.GetPalsByActivity?, tapAction action: ((GetPalsByActivityQuery.Data.GetPalsByActivity?)->Void)?) {
+  func configure(with oPal: Pal?, tapAction action: ((Pal?)->Void)?) {
     if let pal = oPal {
       self.pal = pal
       // set name label
-      if let username = pal.user?.name.fragments.nameFields {
-        self.nameLabel.text = "\(username.first.capitalized)'s down for"
+      if let firstname = pal.user?.name?.first {
+        self.nameLabel.text = "\(firstname.capitalized)'s down for"
       }
       
       // set pal image
-      if let pictureUrl = pal.user?.absolutePicture?.fragments.pictureFields.medium {
+      if let pictureUrl = pal.user?.absolutePicture?.medium {
         let url = URL(string: pictureUrl)
-        let downloader = KingfisherManager.shared.downloader //Downloader needs to be configured to accept untrusted certificates
+        let downloader = KingfisherManager.shared.downloader
+        
+        // ToDO[Security]: remove in production release
+        // Downloader needs to be configured to accept untrusted certificates
         downloader.trustedHosts = Set(["localhost"])
         let placeholder = UIImage(named: "46")
         self.palImage.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
@@ -116,12 +119,14 @@ class PalCollectionViewCell: CardCollectionViewCell {
       }
       
       // set activity label
-      self.activityLabel.text = pal.activity.capitalized
+      self.activityLabel.text = pal.activity?.capitalized
       
       // set date label
       if let date = pal.date {
-        let dateRange = DateRange(start:Int(date.fragments.dateRangeFields.startDate ?? "NIL"), end:Int(date.fragments.dateRangeFields.endDate ?? "NIL"))
+        let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
         self.dateLabel.text =  (dateRange.displayDateFromNow() ?? "").capitalized
+      } else {
+        self.dateLabel.text =  "Anytime"
       }
       
       // set tap action

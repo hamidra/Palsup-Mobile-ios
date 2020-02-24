@@ -44,6 +44,26 @@ struct Group: Codable {
   var members: [User?]? = []
   var waitlist:[User?]? = []
   var conversation: [Message]? = []
+  
+  func getTopMembers(topN:Int) -> [User] {
+    return getTopUsers(topN: topN, users: self.members)
+  }
+  
+  func getTopWaitlist(topN:Int) -> [User] {
+    return getTopUsers(topN: topN, users: self.waitlist)
+  }
+  
+  private func getTopUsers(topN:Int, users:[User?]?) -> [User] {
+    var topUsers:[User] = []
+    if let users = users , users.count > 0 {
+      for i in 0..<min(topN, users.count) {
+        if let user = users[i] {
+          topUsers.append(user)
+        }
+      }
+    }
+    return topUsers
+  }
 }
 
 struct Message: Codable {
@@ -64,7 +84,8 @@ struct User: Codable {
   var gender: String? = nil
   var name: Name? = nil
   var email: String? = nil
-  var cell:String? = nil
+  var cell: String? = nil
+  var pushNotificationToken: String? = nil
   var location: Location? = nil
   var education: [Education]? = []
   var work: [Work]? = []
@@ -95,12 +116,12 @@ struct Location: Codable {
   var city: String? = nil
   var state: String? = nil
   var coordinates: Coordinates? = nil
+  var radius: Int? = nil
 }
 
 struct Coordinates: Codable {
-  var latitude: String? = nil
-  var longitude: String? = nil
-  var raidus: Int? = nil
+  var longitude: Double? = nil
+  var latitude: Double? = nil
 }
 
 struct Name: Codable {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Promises
+import Kingfisher
 
 class EventListItem {
   var event : Event
@@ -22,7 +23,6 @@ class EventListItem {
 class EventListViewController: UIViewController {
   @IBOutlet weak var eventsTableView: UITableView!
   
-  var userId = "5ddc223c33cbee51992efdb7"
   var eventList: [EventListItem] = [] {
     didSet {
       eventsTableView.reloadData()
@@ -40,7 +40,7 @@ class EventListViewController: UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showEventConversations" {
-      if let vc = segue.destination as? EventConversationViewController, let event = sender as? Event {
+      if let vc = segue.destination as? EventPageViewController, let event = sender as? Event {
         vc.event = event
       }
       else
@@ -148,10 +148,14 @@ class EventListViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
-    fetchEventsForUser(userId: self.userId).then({events in
-      self.eventList = events
-    })
+    if let uid = SignedInUser.Identity?.id {
+      fetchEventsForUser(userId: uid).then({events in
+        self.eventList = events
+      })
+    } else {
+      //ToDO: redirect to signIn page
+      print("No user is logged in")
+    }
   }
 }
 
@@ -163,8 +167,38 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let eventListTabelViewCell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell", for: indexPath)
+    
+    // Set activity label
     eventListTabelViewCell.textLabel?.text = eventList[indexPath.row].event.activity
-    eventListTabelViewCell.detailTextLabel?.text = "Today"
+    
+    // Set date label
+    if let date = eventList[indexPath.row].event.date {
+      let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
+      eventListTabelViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
+    } else {
+      eventListTabelViewCell.detailTextLabel?.text = "Anytime"
+    }
+
+    // Set image
+    if let imageView = eventListTabelViewCell.imageView {
+      //imageView.contentMode = .scaleAspectFill
+      if let pictureUrl = eventList[indexPath.row].event.absoluteImage {
+        let url = URL(string: pictureUrl)
+        let downloader = KingfisherManager.shared.downloader //Downloader needs to be configured to accept untrusted certificates
+        downloader.trustedHosts = Set(["localhost"])
+        let placeholder = UIImage(named: "46")
+        eventListTabelViewCell.imageView?.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
+        {
+          result in
+          switch result {
+          case .success(let value):
+            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+          case .failure(let error):
+            print("Job failed: \(error.localizedDescription)")
+          }
+        }
+      }
+    }
     return eventListTabelViewCell
   }
   
