@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
       }*/
       SignedInUser.fetchNotifications();
+      GqlClient.shared.clearCache();
       return true
     }
 
@@ -53,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
       SignedInUser.fetchNotifications()
+      GqlClient.shared.clearCache();
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -125,6 +127,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print("running ---> \n \(aps)")
       var apnsNotification = APNSNotification(info: notification)
       SignedInUser.updateNotifications(notification: apnsNotification)
+      GqlClient.shared.clearCache()
+      if apnsNotification.type == .newMessage {
+        NotificationCenter.default.post(name: APNSNotification.notificationNewMessage, object: nil, userInfo: apnsNotification.data)
+      }
       /*print("event \n \(apnsNotification.data[ApnsFieldNames.event] as? Event)")
       print("palId \n \(apnsNotification.data[ApnsFieldNames.palId])")
       print("eventId \n \(apnsNotification.data[ApnsFieldNames.eventId])")
@@ -159,6 +165,7 @@ extension AppDelegate : MessagingDelegate {
     
     let dataDict:[String: String] = ["token": fcmToken]
     NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    SignedInUser.setPushNotificationToken(token: fcmToken)
     // TODO: If necessary send token to application server.
     // Note: This callback is fired at each app startup and whenever a new token is generated.
   }

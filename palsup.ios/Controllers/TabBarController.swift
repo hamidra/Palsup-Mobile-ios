@@ -17,21 +17,21 @@ class TabBarController: UITabBarController {
     print("show notes, launch")
     showNotifications()
     
-    NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationUpdates), name: APNSNotification.notifictionCountUpdate, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationUpdates), name: APNSNotification.notificationCountUpdate, object: nil)
   }
   
   @objc func handleNotificationUpdates() {
-    print("show notes notifictionCountUpdate")
+    print("show notes notificationCountUpdate")
     showNotifications()
   }
   
   func showNotifications() {
     let notificationCounts = SignedInUser.getNotificationCounts()
 
-    if let eventNotificationCount = notificationCounts?[UserDefaultsKeys.notificationCountsKey], eventNotificationCount > 0 {
+    if let eventNotificationCount = notificationCounts?[UserDefaultsKeys.eventNotificationCountKey], eventNotificationCount > 0 {
       self.tabBar.items?[0].badgeValue = "\(eventNotificationCount)"
     }
-    if let palNotificationCount = notificationCounts?[UserDefaultsKeys.notificationCountsKey], palNotificationCount > 0 {
+    if let palNotificationCount = notificationCounts?[UserDefaultsKeys.palNotificationCountKey], palNotificationCount > 0 {
       self.tabBar.items?[2].badgeValue = "\(palNotificationCount)"
     }
   }

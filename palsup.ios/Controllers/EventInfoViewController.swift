@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class EventInfoViewController: UIViewController {
-  var event:GetEventsByActivityQuery.Data.GetEventsByActivity?
+  var event: Event?
   
   lazy var eventDetailView: EventDetailView = {
     return EventDetailView()
@@ -75,17 +75,8 @@ class EventInfoViewController: UIViewController {
   }
   
   func acceptAction() {
-    if let event=self.event, let currentUserId=SignedInUser.Identity?.id {
-      let addToEventsWaitlistMutation = AddToEventsWaitlistMutation(eventId: event.id, userId: currentUserId)
-      GqlClient.shared.client.perform(mutation: addToEventsWaitlistMutation) {
-        result in
-        switch result {
-        case .success:
-          print("added to the event's Waitlist")
-        case .failure(let error):
-          print(error)
-        }
-      }
+    if let event=self.event, let eventId = event.id, let currentUserId=SignedInUser.Identity?.id {
+      GqlApiProvider.addToEventsWaitlist(eventId: eventId, userId: currentUserId)
     } else {
       //ToDO: redirect to signIn page
       print("No user is logged in")

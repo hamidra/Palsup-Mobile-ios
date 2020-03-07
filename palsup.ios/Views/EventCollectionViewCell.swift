@@ -12,6 +12,13 @@ import SwiftDate
 import SnapKit
 
 class EventCollectionViewCell: CardCollectionViewCell {
+  var event: Event?
+  
+  lazy var membersAvatarBar: AvatarBarView = {
+    let avatarBar = AvatarBarView()
+    return avatarBar
+  }()
+  
   lazy var activityLabel: UILabel = {
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -40,9 +47,16 @@ class EventCollectionViewCell: CardCollectionViewCell {
     stack.axis = .vertical
     return stack
   }()
+  lazy var likeButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("🤙", for: .normal)
+    button.backgroundColor = UIColor.systemRed
+    button.showsTouchWhenHighlighted = true
+    button.addTarget(self, action: #selector(handleLikeTap), for: .touchUpInside)
+    return button
+  }()
   
-  var event: GetEventsByActivityQuery.Data.GetEventsByActivity?
-  var tapAction: ((GetEventsByActivityQuery.Data.GetEventsByActivity?)->Void)?
+  var tapAction: ((Event?)->Void)?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -58,6 +72,8 @@ class EventCollectionViewCell: CardCollectionViewCell {
     backgroundColor = .clear
     self.contentView.addSubview(eventImage)
     self.contentView.addSubview(eventInfoStack)
+    self.contentView.addSubview(membersAvatarBar)
+    self.contentView.addSubview(likeButton)
     setupLayout()
   }
   
@@ -71,7 +87,16 @@ class EventCollectionViewCell: CardCollectionViewCell {
     eventInfoStack.snp.makeConstraints { (make) -> Void in
       make.bottom.equalTo(self).offset(-20)
       make.left.equalTo(self).offset(20)
+      make.right.equalTo(likeButton.snp.left).offset(-20)
+    }
+    membersAvatarBar.snp.makeConstraints {(make) -> Void in
+      make.top.equalTo(self).offset(20)
+      make.left.equalTo(self).offset(20)
+      make.height.equalTo(40)
+    }
+    likeButton.snp.makeConstraints{(make) -> Void in
       make.right.equalTo(self).offset(-20)
+      make.bottom.equalTo(self).offset(-20)
     }
   }
   
@@ -81,7 +106,16 @@ class EventCollectionViewCell: CardCollectionViewCell {
     }
   }
   
-  func configure(with oEvent: GetEventsByActivityQuery.Data.GetEventsByActivity?, tapAction action: ((GetEventsByActivityQuery.Data.GetEventsByActivity?)->Void)?) {
+  @objc func handleLikeTap() {
+    if let event = self.event, let eventId = event.id, let currentUserId=SignedInUser.Identity?.id {
+      GqlApiProvider.addToEventsWaitlist(eventId: eventId, userId: currentUserId)
+    } else {
+      //ToDO: redirect to signIn page
+      print("No user is logged in")
+    }
+  }
+  
+  func configure(with oEvent: Event?, tapAction action: ((Event?)->Void)?) {
     if let event = oEvent{
       self.event = event
       // set event image
@@ -103,16 +137,19 @@ class EventCollectionViewCell: CardCollectionViewCell {
       }
       
       // set activity label
-      self.activityLabel.text = event.activity.capitalized
+      self.activityLabel.text = event.activity?.capitalized ?? ""
       
       // set date label
       if let date = event.date {
-        let dateRange = DateRange(start:Int(date.fragments.dateRangeFields.startDate ?? "NIL"), end:Int(date.fragments.dateRangeFields.endDate ?? "NIL"))
+        let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
         self.dateLabel.text = (dateRange.displayDateFromNow() ?? "").capitalized
       } else {
         self.dateLabel.text = "Anytime"
       }
-      
+      // setup member avatars
+      if let topMembers = event.group?.getTopMembers(topN: 5), topMembers.count > 0 {
+        membersAvatarBar.configure(users: topMembers, tapAction: nil)
+      }
       // set tap action
       if action != nil {
         self.tapAction = action

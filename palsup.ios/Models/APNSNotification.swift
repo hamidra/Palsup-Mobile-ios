@@ -27,7 +27,8 @@ public class ApnsFieldNames {
 
 public class APNSNotification {
   
-  public static let notifictionCountUpdate = Notification.Name("notifictionCountUpdate")
+  public static let notificationCountUpdate = Notification.Name("notificationCountUpdate")
+  public static let notificationNewMessage = Notification.Name("notificationNewMessage")
   
   let type: ApnsNotificationType?
   var data =  [String: Any?]()

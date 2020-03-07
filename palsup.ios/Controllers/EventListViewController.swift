@@ -92,7 +92,7 @@ class EventListViewController: UIViewController {
     }
   }
   
-  func fetchEventsWithNoNotifications(userId:String, excludeIds:[String]?) -> Promise<[EventListItem]> {
+  func fetchEventsWithoutNotifications(userId:String, excludeIds:[String]?) -> Promise<[EventListItem]> {
     return Promise<[EventListItem]> { fulfill, reject in
       let decoder = JSONDecoder()
       // Query Events with no notifications for the user
@@ -132,7 +132,7 @@ class EventListViewController: UIViewController {
         var fetchedEvents:[EventListItem] = eventsWithNotifications
         // get the ids of already fetched events to exclude them from next query
         let excludeIds:[String] = eventsWithNotifications.compactMap({$0.event.id})
-        self.fetchEventsWithNoNotifications(userId: userId, excludeIds: excludeIds).then({eventsWithNoNotifications in
+        self.fetchEventsWithoutNotifications(userId: userId, excludeIds: excludeIds).then({eventsWithNoNotifications in
           fetchedEvents.append(contentsOf: eventsWithNoNotifications)
           fulfill(fetchedEvents)
         })
@@ -144,6 +144,7 @@ class EventListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    /*eventsTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)*/
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -166,28 +167,30 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let eventListTabelViewCell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell", for: indexPath)
+    let eventListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell", for: indexPath)
+    
+    /*eventListTableViewCell.contentView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)*/
     
     // Set activity label
-    eventListTabelViewCell.textLabel?.text = eventList[indexPath.row].event.activity
+    eventListTableViewCell.textLabel?.text = eventList[indexPath.row].event.activity
     
     // Set date label
     if let date = eventList[indexPath.row].event.date {
       let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
-      eventListTabelViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
+      eventListTableViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
     } else {
-      eventListTabelViewCell.detailTextLabel?.text = "Anytime"
+      eventListTableViewCell.detailTextLabel?.text = "Anytime"
     }
 
     // Set image
-    if let imageView = eventListTabelViewCell.imageView {
+    if let imageView = eventListTableViewCell.imageView {
       //imageView.contentMode = .scaleAspectFill
       if let pictureUrl = eventList[indexPath.row].event.absoluteImage {
         let url = URL(string: pictureUrl)
         let downloader = KingfisherManager.shared.downloader //Downloader needs to be configured to accept untrusted certificates
         downloader.trustedHosts = Set(["localhost"])
         let placeholder = UIImage(named: "46")
-        eventListTabelViewCell.imageView?.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
+        eventListTableViewCell.imageView?.kf.setImage(with: url, placeholder: placeholder ,options: [.downloader(downloader)])
         {
           result in
           switch result {
@@ -198,12 +201,29 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
           }
         }
       }
+      imageView.frame = CGRect(x: 0,y: 0,width: 60,height: 60);
     }
-    return eventListTabelViewCell
+    if let notifications = eventList[indexPath.row].notifications {
+      var isNew = notifications.new ?? false
+      var count = notifications.totalCount ?? 0
+      if count > 0 {
+        var notificationBadges = NotificationBadgeView(frame: CGRect(x:0, y:0, width: 80, height:25))
+        notificationBadges.count = count - (isNew ? 1 : 0)
+        notificationBadges.isNew = isNew
+        eventListTableViewCell.accessoryView = notificationBadges
+      } else {
+        eventListTableViewCell.accessoryType = .disclosureIndicator
+      }
+    }
+    return eventListTableViewCell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("did select row at \(indexPath)")
     eventCellTapAction(oEvent: self.eventList[indexPath.row].event)
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 60
   }
 }

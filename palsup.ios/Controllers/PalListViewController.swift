@@ -56,7 +56,7 @@ class PalListViewController: UIViewController {
   
   
   override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -80,20 +80,34 @@ extension PalListViewController : UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let palListTabelViewCell = tableView.dequeueReusableCell(withIdentifier: "PalListTableViewCell", for: indexPath)
+    let palListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "PalListTableViewCell", for: indexPath)
     
     // Set the activity label
-    palListTabelViewCell.textLabel?.text = palList[indexPath.row].pal.activity
+    palListTableViewCell.textLabel?.text = palList[indexPath.row].pal.activity
     
     // Set date label
     if let date = palList[indexPath.row].pal.date {
       let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
-      palListTabelViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
+      palListTableViewCell.detailTextLabel?.text = dateRange.displayDateFromNow() ?? "Anytime"
     } else {
-      palListTabelViewCell.detailTextLabel?.text = "Anytime"
+      palListTableViewCell.detailTextLabel?.text = "Anytime"
     }
     
-    return palListTabelViewCell
+    // set notification badges
+    if let notifications = palList[indexPath.row].notifications {
+      var isNew = notifications.new ?? false
+      var count = notifications.totalCount ?? 0
+      if count > 0 {
+        let notificationBadges = NotificationBadgeView(frame: CGRect(x:0, y:0, width: 80, height:25))
+        notificationBadges.count = count - (isNew ? 1 : 0)
+        notificationBadges.isNew = isNew
+        palListTableViewCell.accessoryView = notificationBadges
+      } else {
+        palListTableViewCell.accessoryType = .disclosureIndicator
+      }
+    }
+    
+    return palListTableViewCell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -60,7 +60,7 @@ class SignedInUser {
     return _profileImageCache!
   }
   
-  static func SignIn(username: String, pass: String) -> Promise<Any> {
+  static func signIn(username: String, pass: String) -> Promise<Any> {
     // Signin to the App
     return getUserByAuthInfo(username: username, pass: pass).then({oUser in
       guard let user = oUser else {
@@ -181,7 +181,7 @@ class SignedInUser {
     do {
       let notificationCountsData = try encoder.encode(notificationCounts)
       defaults.set(notificationCountsData, forKey: UserDefaultsKeys.notificationCountsKey)
-      NotificationCenter.default.post(name: APNSNotification.notifictionCountUpdate, object: nil)
+      NotificationCenter.default.post(name: APNSNotification.notificationCountUpdate, object: nil)
     } catch {
       print("there was an error while setting notification counts \(error)")
     }
@@ -202,8 +202,9 @@ class SignedInUser {
     return counts
   }
   
-  static func SignOut() {
+  static func signOut() {
     let defaults = UserDefaults.standard
+    _user = nil
     defaults.removeObject(forKey: UserDefaultsKeys.userKey)
     defaults.removeObject(forKey: UserDefaultsKeys.notificationCountsKey)
   }

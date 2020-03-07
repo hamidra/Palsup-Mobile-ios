@@ -111,7 +111,7 @@ class SearchViewController: UIViewController {
   }
   
   func setupView() {
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill"), style: .plain, target: self, action: #selector(showSettings))
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "account"), style: .plain, target: self, action: #selector(showSettings))
     self.view.addSubview(scrollView)
     setupLayout()
     

@@ -13,13 +13,13 @@ class AttendeesListViewController: UIViewController {
   var event: Event?
   var users: [User] = [] {
     didSet {
-      userListTabelView.reloadData()
+      userListTableView.reloadData()
     }
   }
   
   var isWaitlist: Bool = false
   
-  @IBOutlet weak var userListTabelView: UITableView!
+  @IBOutlet weak var userListTableView: UITableView!
   
   func userCellTapAction(user: User?) {
     if let user = user {
@@ -141,15 +141,15 @@ extension AttendeesListViewController: UITableViewDataSource, UITableViewDelegat
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let userListTabelViewCell = tableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell", for: indexPath)
+    let userListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UserListTableViewCell", for: indexPath)
   
-    userListTabelViewCell.textLabel?.text = users[indexPath.row].name?.first
-    if let imageView = userListTabelViewCell.imageView, let thumbnailUrl = users[indexPath.row].absolutePicture?.thumbnail {
+    userListTableViewCell.textLabel?.text = users[indexPath.row].name?.first
+    if let imageView = userListTableViewCell.imageView, let thumbnailUrl = users[indexPath.row].absolutePicture?.thumbnail {
       imageView.contentMode = .scaleAspectFit
       ImageDownloader.shared.setImage(imageView: imageView, url: thumbnailUrl)
     }
-    userListTabelViewCell.detailTextLabel?.text = self.isWaitlist ? "Vote" : nil
-    return userListTabelViewCell
+    userListTableViewCell.detailTextLabel?.text = self.isWaitlist ? "Vote" : nil
+    return userListTableViewCell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

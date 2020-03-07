@@ -96,6 +96,12 @@ class EditProfileViewController: FormViewController {
           $0.header = header
           $0.header?.height = {100}
         }
+        <<< ButtonRow() { row in
+          row.title = "Sign Out"
+          row.onCellSelection() {cell, row in
+            self.signout()
+          }
+        }
         <<< TextRow("firstName"){ row in
           row.title = "First Name"
         }
@@ -183,6 +189,12 @@ class EditProfileViewController: FormViewController {
         }
       }
     }
+  }
+  
+  func signout() {
+    SignedInUser.signOut()
+    let initialViewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialVC") as UIViewController
+    self.show(initialViewController, sender: nil)
   }
   
   func setupLayout() {

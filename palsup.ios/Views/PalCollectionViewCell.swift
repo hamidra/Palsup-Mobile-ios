@@ -51,7 +51,14 @@ class PalCollectionViewCell: CardCollectionViewCell {
     stack.axis = .vertical
     return stack
   }()
-    
+  lazy var likeButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("🤙", for: .normal)
+    button.backgroundColor = UIColor.systemRed
+    button.showsTouchWhenHighlighted = true
+    return button
+  }()
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupView()
@@ -66,6 +73,7 @@ class PalCollectionViewCell: CardCollectionViewCell {
     backgroundColor = .clear
     self.contentView.addSubview(palImage)
     self.contentView.addSubview(palInfoStack)
+    self.contentView.addSubview(likeButton)
     setupLayout()
   }
   
@@ -79,7 +87,11 @@ class PalCollectionViewCell: CardCollectionViewCell {
     palInfoStack.snp.makeConstraints { (make) -> Void in
       make.bottom.equalTo(self).offset(-20)
       make.left.equalTo(self).offset(20)
+      make.right.equalTo(likeButton.snp.left).offset(-20)
+    }
+    likeButton.snp.makeConstraints{(make) -> Void in
       make.right.equalTo(self).offset(-20)
+      make.bottom.equalTo(self).offset(-20)
     }
   }
   

@@ -27,7 +27,7 @@ class SearchResultViewController: UIViewController {
     }
   }
   
-  var eventsByActivity:[GetEventsByActivityQuery.Data.GetEventsByActivity?]? {
+  var eventsByActivity:[Event?]? {
     didSet {
       eventsCollectionView.reloadData()
     }
@@ -83,16 +83,10 @@ class SearchResultViewController: UIViewController {
         })
         
         // Query Events by Activity
-        let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: currentUser.id, activityFilter: gqlActivityFilter)
-        GqlClient.shared.client.fetch(query: gqlGetEventsByActivityQuery){
-          result in
-          switch result {
-          case .success(let gqlResult):
-            self.eventsByActivity = gqlResult.data?.getEventsByActivity
-          case .failure(let error):
-            print(error)
-          }
-        }
+        getEventsByActivity(userId: userId, activityFilter: gqlActivityFilter).then({ events in
+          self.eventsByActivity = events
+        })
+        
       } else {
         print("could not search for the user some required search filters are missing! \n filter: \(searchFilter) \n Identity: \(SignedInUser.Identity)")
       }
@@ -110,7 +104,7 @@ class SearchResultViewController: UIViewController {
         print("not happening")
       }
     } else if segue.identifier == "showEventDetail" {
-      if let vc = segue.destination as? EventInfoViewController, let event = sender as? GetEventsByActivityQuery.Data.GetEventsByActivity {
+      if let vc = segue.destination as? EventInfoViewController, let event = sender as? Event {
         vc.event = event
       }
       else
@@ -126,7 +120,7 @@ class SearchResultViewController: UIViewController {
     }
   }
   
-  func eventCellTapAction(oEvent: GetEventsByActivityQuery.Data.GetEventsByActivity?){
+  func eventCellTapAction(oEvent: Event?){
     if let event = oEvent {
       performSegue(withIdentifier: "showEventDetail", sender: event)
     }
@@ -181,6 +175,40 @@ extension SearchResultViewController {
             })
           } else {
             print("getPalsByActivity returned no data")
+          }
+          return fulfill(items)
+        case .failure(let error):
+          print(error)
+        }
+      }
+    }
+  }
+  
+  func getEventsByActivity(userId: String, activityFilter: ActivityFilterInput) -> Promise<[Event]> {
+    let decoder = JSONDecoder()
+    return Promise<[Event]> { fulfill, reject in
+      var items: [Event] = []
+      let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: userId, activityFilter: activityFilter)
+      GqlClient.shared.client.fetch(query: gqlGetEventsByActivityQuery) { result in
+        switch result {
+        case .success(let gqlResult):
+          if let events = gqlResult.data?.getEventsByActivity {
+            items = events.compactMap({ item in
+              if let eventItem = item {
+                do {
+                  let eventData = try JSONSerialization.data(withJSONObject: eventItem.jsonObject, options: [])
+                  let event =  try decoder.decode(Event.self, from: eventData )
+                  return event
+                } catch {
+                  print("Error happened in deserialization of eventItem\(eventItem), error:\(error)")
+                  return nil
+                }
+              } else {
+                return nil
+              }
+            })
+          } else {
+            print("getEventsByActivity returned no data")
           }
           return fulfill(items)
         case .failure(let error):

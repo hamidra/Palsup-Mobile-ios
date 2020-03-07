@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250380592404D064000AB879 /* NotificationBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250380582404D064000AB879 /* NotificationBadgeView.swift */; };
 		250E98E5238DDBA800EFF82F /* LikeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E4238DDBA800EFF82F /* LikeBarView.swift */; };
 		250E98E9238E10A900EFF82F /* SignedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E8238E10A900EFF82F /* SignedInUser.swift */; };
+		25105793240894D200867832 /* UIStyleExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25105792240894D100867832 /* UIStyleExtenstions.swift */; };
 		2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824922F4D68500888B4C /* AppDelegate.swift */; };
 		2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824B22F4D68500888B4C /* SearchViewController.swift */; };
 		2537824F22F4D68500888B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537824D22F4D68500888B4C /* Main.storyboard */; };
@@ -87,8 +89,10 @@
 
 /* Begin PBXFileReference section */
 		238E7C3A1234F0445795075E /* Pods_palsup_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_palsup_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		250380582404D064000AB879 /* NotificationBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBadgeView.swift; sourceTree = "<group>"; };
 		250E98E4238DDBA800EFF82F /* LikeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBarView.swift; sourceTree = "<group>"; };
 		250E98E8238E10A900EFF82F /* SignedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUser.swift; sourceTree = "<group>"; };
+		25105792240894D100867832 /* UIStyleExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleExtenstions.swift; sourceTree = "<group>"; };
 		2537824622F4D68500888B4C /* palsup.ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palsup.ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537824922F4D68500888B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2537824B22F4D68500888B4C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				259902CF23DA35D60056132B /* AvatarBarView.swift */,
 				258CBE9D23DF818400325E6C /* CircleLabel.swift */,
 				2567B42B23E3A7B300D98B5B /* VoteBarView.swift */,
+				250380582404D064000AB879 /* NotificationBadgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 			children = (
 				25E94A9823A79A6A00CEEEE2 /* UIStyle.swift */,
 				25B8D63F23BF91F900023012 /* Settings.swift */,
+				25105792240894D100867832 /* UIStyleExtenstions.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				259902CE23D906F50056132B /* ImageDownloader.swift in Sources */,
 				2565654623B722A900B6C2F2 /* ImagePickerController.swift in Sources */,
 				2595880223D3D8B800EBD8C7 /* SignUpBioViewController.swift in Sources */,
+				25105793240894D200867832 /* UIStyleExtenstions.swift in Sources */,
 				25943DBD2383A2870011774C /* Errors.swift in Sources */,
 				25B8D64023BF91F900023012 /* Settings.swift in Sources */,
 				2537827D22F8E00D00888B4C /* SearchButton.swift in Sources */,
@@ -682,6 +689,7 @@
 				25E94A9923A79A6A00CEEEE2 /* UIStyle.swift in Sources */,
 				259587FE23D37A9C00EBD8C7 /* SignUpPhotoViewController.swift in Sources */,
 				25BD3FD823BCCEE400801758 /* ImagePickerCropController.swift in Sources */,
+				250380592404D064000AB879 /* NotificationBadgeView.swift in Sources */,
 				259902D023DA35D60056132B /* AvatarBarView.swift in Sources */,
 				2595880623D3F26500EBD8C7 /* GeneratedAPI.swift in Sources */,
 				25ED9B162368C00E0089C901 /* Date.swift in Sources */,
@@ -865,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU854M9D3Y;
 				INFOPLIST_FILE = palsup.ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -888,7 +896,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU854M9D3Y;
 				INFOPLIST_FILE = palsup.ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

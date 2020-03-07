@@ -48,8 +48,23 @@ class GqlApiProvider {
             fulfill(gqlResult.data?.getNotificationCountsForUser)
           case .failure(let error):
             reject(error)
-          }
         }
       }
     }
   }
+  public static func addToEventsWaitlist (eventId: String, userId: String) -> Promise<String?> {
+    return Promise<String?> { fulfill, reject in
+      let addToEventsWaitlistMutation = AddToEventsWaitlistMutation(eventId: eventId, userId: userId)
+      GqlClient.shared.client.perform(mutation: addToEventsWaitlistMutation) {
+        result in
+        switch result {
+        case .success(let gqlResult):
+          print("added to the event's Waitlist")
+          fulfill(gqlResult.data?.addToEventsWaitlist)
+        case .failure(let error):
+          print(error)
+        }
+      }
+    }
+  }
+}

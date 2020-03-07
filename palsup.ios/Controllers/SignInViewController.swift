@@ -111,7 +111,7 @@ class SignInViewController: UIViewController {
   
   @objc func signinTapAction() {
     if let username = userAuthIdTextField.text, let pass = passwordTextField.text {
-      SignedInUser.SignIn(username: username, pass: pass).then({ _ in
+      SignedInUser.signIn(username: username, pass: pass).then({ _ in
         /*let initialVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialVC")
         self.show(initialVC, sender: nil)*/
         self.performSegue(withIdentifier: "toInitialView", sender: nil)

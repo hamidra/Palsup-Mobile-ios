@@ -9,5 +9,5 @@
 import Foundation
 
 struct Settings {
-  static let backendURL: String = "http://localhost:4000"
+  static let backendURL: String = "http://api.palsup.com"/*"http://localhost:4000"*/
 }

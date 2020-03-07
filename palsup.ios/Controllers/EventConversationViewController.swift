@@ -96,6 +96,7 @@ class EventConversationViewController: MessagesViewController {
         }
       }
     }
+    NotificationCenter.default.addObserver(self, selector: #selector(handleNewMessage), name: APNSNotification.notificationNewMessage, object: nil)
   }
   
   func configureMessageCollectionView() {
@@ -139,6 +140,21 @@ class EventConversationViewController: MessagesViewController {
      }*/
   }
   
+  @objc
+  func handleNewMessage(notification: NSNotification) {
+    if let messageInfo = notification.userInfo?[ApnsFieldNames.message] as? Message, let senderId = messageInfo.from?.id, let senderName = messageInfo.from?.name?.first {
+      var sender = Sender(id: senderId, displayName: senderName)
+      var messageId = messageInfo.id ?? UUID().uuidString
+      /*ToDO: add date to API return values and use the actual date from server Date(milliseconds: Int(message?.date)*/
+      var sentDate = Date()
+      var kind: MessageKind = .text(messageInfo.content?.text ?? " ")
+      var status = EventMessage.DeliveryStatus.recieved
+      var message = EventMessage(sender:sender, messageId:messageId, date:sentDate, kind:kind, status:status)
+      self.messages.append(message)
+      self.messagesCollectionView.reloadDataAndKeepOffset()
+    }
+  }
+  
   private func insertMessages(_ data: [Any]) {
     /*for component in data {
      let user = SampleData.shared.currentSender
@@ -173,7 +189,10 @@ class EventConversationViewController: MessagesViewController {
 extension EventConversationViewController: MessagesDataSource {
 
   func currentSender() -> SenderType {
-    return Sender(id: "5ddc223c33cbee51992efdb7", displayName: "Hamid")
+    if let userId = SignedInUser.Identity?.id, let name=SignedInUser.Identity?.name?.first {
+      return Sender(id: userId, displayName: name)
+    }
+    return Sender(id: "", displayName: "")
   }
   
   func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -416,6 +435,10 @@ extension EventConversationViewController: MessagesDisplayDelegate {
 extension EventConversationViewController {
   func sendMessage(message:EventMessage, to:String, type:MessageType = .event) -> Promise<String?> {
     return Promise<String?> { fulfill, reject in
+      // Check sender is valid
+      if message.sender.senderId == "" {
+        reject(GenericError("Message senderId is not valid. User must login to send messages"))
+      }
       // Send Message to Server
       switch (message.kind) {
       case .text(let textContent) :
