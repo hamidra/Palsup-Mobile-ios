@@ -11,6 +11,7 @@
 		250E98E5238DDBA800EFF82F /* LikeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E4238DDBA800EFF82F /* LikeBarView.swift */; };
 		250E98E9238E10A900EFF82F /* SignedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E98E8238E10A900EFF82F /* SignedInUser.swift */; };
 		25105793240894D200867832 /* UIStyleExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25105792240894D100867832 /* UIStyleExtenstions.swift */; };
+		25191AD12431876E0055ABA1 /* EmptyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25191AD02431876E0055ABA1 /* EmptyPageView.swift */; };
 		2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824922F4D68500888B4C /* AppDelegate.swift */; };
 		2537824C22F4D68500888B4C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2537824B22F4D68500888B4C /* SearchViewController.swift */; };
 		2537824F22F4D68500888B4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2537824D22F4D68500888B4C /* Main.storyboard */; };
@@ -93,7 +94,8 @@
 		250E98E4238DDBA800EFF82F /* LikeBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBarView.swift; sourceTree = "<group>"; };
 		250E98E8238E10A900EFF82F /* SignedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInUser.swift; sourceTree = "<group>"; };
 		25105792240894D100867832 /* UIStyleExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStyleExtenstions.swift; sourceTree = "<group>"; };
-		2537824622F4D68500888B4C /* palsup.ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palsup.ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25191AD02431876E0055ABA1 /* EmptyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPageView.swift; sourceTree = "<group>"; };
+		2537824622F4D68500888B4C /* Palsup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palsup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2537824922F4D68500888B4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2537824B22F4D68500888B4C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2537824E22F4D68500888B4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,7 +232,7 @@
 		2537824722F4D68500888B4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2537824622F4D68500888B4C /* palsup.ios.app */,
+				2537824622F4D68500888B4C /* Palsup.app */,
 				2537825D22F4D68600888B4C /* palsup.iosTests.xctest */,
 				2537826822F4D68700888B4C /* palsup.iosUITests.xctest */,
 			);
@@ -294,6 +296,7 @@
 				258CBE9D23DF818400325E6C /* CircleLabel.swift */,
 				2567B42B23E3A7B300D98B5B /* VoteBarView.swift */,
 				250380582404D064000AB879 /* NotificationBadgeView.swift */,
+				25191AD02431876E0055ABA1 /* EmptyPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,7 +423,7 @@
 			);
 			name = palsup.ios;
 			productName = palsup.ios;
-			productReference = 2537824622F4D68500888B4C /* palsup.ios.app */;
+			productReference = 2537824622F4D68500888B4C /* Palsup.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2537825C22F4D68600888B4C /* palsup.iosTests */ = {
@@ -668,6 +671,7 @@
 				250E98E9238E10A900EFF82F /* SignedInUser.swift in Sources */,
 				254A7E6323EB63C200763ADF /* PushNotificationProvider.swift in Sources */,
 				2555FD262379096E0081545A /* EventConversationViewController.swift in Sources */,
+				25191AD12431876E0055ABA1 /* EmptyPageView.swift in Sources */,
 				2537824A22F4D68500888B4C /* AppDelegate.swift in Sources */,
 				25943DC32385E7200011774C /* CardCollectionViewCell.swift in Sources */,
 				25E97E1323FBCFCB007A9B9D /* APNSNotification.swift in Sources */,
@@ -879,7 +883,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.palsup.palsup;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Palsup;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -902,7 +906,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.palsup.palsup;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Palsup;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

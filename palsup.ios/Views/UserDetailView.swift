@@ -160,14 +160,19 @@ class UserDetailView: UIView {
       if let educations = user.education, educations.count > 0 {
         self.educationLabel.text = "\(educations[0].school?.capitalized ?? "") \(educations[0].classOf?.capitalized ?? "")"
       }
+      self.educationStack.isHidden = (self.educationLabel.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
       
       // set work label
       if let works = user.work, works.count > 0 {
         self.workLabel.text = "\(works[0].title?.capitalized ?? "") \(works[0].organization?.capitalized ?? "")"
       }
+      self.workStack.isHidden = (self.workLabel.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
       
       // set bio label
-      self.bioTextView.text = "Entrepreneur and businessman Bill Gates and his business partner Paul Allen founded and built the world's largest software business, Microsoft, through technological innovation, keen business strategy and aggressive business tactics. In the process, Gates became one of the richest men in the world. In February 2014, Gates announced that he was stepping down as Microsoft's chairman to focus on charitable work at his foundation, the Bill and Melinda Gates Foundation."
+      if let bio = user.bio {
+        self.bioTextView.text = bio
+      }
+      self.bioTextView.isHidden = (self.bioTextView.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
       
       // set user image
       if let pictureUrl = user.absolutePicture?.medium {

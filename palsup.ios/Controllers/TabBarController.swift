@@ -14,14 +14,16 @@ class TabBarController: UITabBarController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
-    print("show notes, launch")
+    print("show notifications, launch")
     showNotifications()
     
     NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationUpdates), name: APNSNotification.notificationCountUpdate, object: nil)
+    
+    self.selectedIndex = 1
   }
   
   @objc func handleNotificationUpdates() {
-    print("show notes notificationCountUpdate")
+    print("show notifications, notificationCountUpdate")
     showNotifications()
   }
   

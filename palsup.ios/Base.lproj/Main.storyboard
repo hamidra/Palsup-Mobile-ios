@@ -11,14 +11,15 @@
         <!--EventList-->
         <scene sceneID="bpa-WM-E3i">
             <objects>
-                <viewController title="EventList" id="C8A-cD-gyh" customClass="EventListViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="EventList" id="C8A-cD-gyh" customClass="EventListViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xgN-xu-a1p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-Pi-ZjD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-Pi-ZjD">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EventListTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventListTableViewCell" textLabel="La2-0t-0fA" detailTextLabel="ddj-sA-Axa" imageView="ptc-V8-R7w" rowHeight="69" style="IBUITableViewCellStyleSubtitle" id="MQr-B6-XiP">
@@ -78,7 +79,7 @@
         <!--Event Page View Controller-->
         <scene sceneID="vCQ-6h-Uk5">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" id="ePV-X6-rPK" customClass="EventPageViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" id="ePV-X6-rPK" customClass="EventPageViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Edw-NQ-UN6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +99,7 @@
         <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Search" id="BYZ-38-t0r" customClass="SearchViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="BYZ-38-t0r" customClass="SearchViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +118,7 @@
         <!--SearchResult-->
         <scene sceneID="4dE-de-Flq">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="W39-fZ-43z" userLabel="SearchResult" customClass="SearchResultViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="W39-fZ-43z" userLabel="SearchResult" customClass="SearchResultViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v41-ko-yIi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +139,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-uB-9Mu" userLabel="Event Collection View">
-                                <rect key="frame" x="0.0" y="158" width="414" height="738"/>
+                                <rect key="frame" x="0.0" y="158" width="414" height="704"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aFv-bE-SGs">
                                     <size key="itemSize" width="300" height="300"/>
@@ -169,12 +170,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="trailing" secondItem="Ge6-nS-FlQ" secondAttribute="trailing" id="15b-eH-6SO"/>
                             <constraint firstItem="A61-vZ-lI5" firstAttribute="trailing" secondItem="Ge6-nS-FlQ" secondAttribute="trailing" id="2nU-cP-J9Q"/>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="top" secondItem="Ge6-nS-FlQ" secondAttribute="top" id="5cg-un-NfN"/>
                             <constraint firstItem="A61-vZ-lI5" firstAttribute="bottom" secondItem="Ge6-nS-FlQ" secondAttribute="bottom" id="IIS-fq-xM5"/>
-                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="leading" secondItem="A61-vZ-lI5" secondAttribute="leading" id="WAm-jG-JDl"/>
-                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="top" secondItem="rl0-J0-Qs9" secondAttribute="bottom" constant="10" id="Yeh-8I-Lzw"/>
-                            <constraint firstItem="A61-vZ-lI5" firstAttribute="trailing" secondItem="nbo-uB-9Mu" secondAttribute="trailing" id="Yvi-7S-3OV"/>
-                            <constraint firstAttribute="bottom" secondItem="nbo-uB-9Mu" secondAttribute="bottom" id="ebs-65-igJ"/>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="bottom" secondItem="Ge6-nS-FlQ" secondAttribute="bottom" id="jD5-DQ-H2g"/>
+                            <constraint firstItem="nbo-uB-9Mu" firstAttribute="leading" secondItem="Ge6-nS-FlQ" secondAttribute="leading" id="k0W-Qu-sWS"/>
                             <constraint firstItem="Ge6-nS-FlQ" firstAttribute="leading" secondItem="A61-vZ-lI5" secondAttribute="leading" id="lPY-iu-yOV"/>
                             <constraint firstItem="Ge6-nS-FlQ" firstAttribute="top" secondItem="rl0-J0-Qs9" secondAttribute="bottom" constant="10" id="o6b-ht-Ynp"/>
                             <constraint firstItem="rl0-J0-Qs9" firstAttribute="centerX" secondItem="A61-vZ-lI5" secondAttribute="centerX" id="wVx-Xo-gK8"/>
@@ -192,12 +193,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wq8-QX-oTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3223" y="-13"/>
+            <point key="canvasLocation" x="3221.739130434783" y="-13.392857142857142"/>
         </scene>
         <!--Pal Info View Controller-->
         <scene sceneID="elg-dI-yZl">
             <objects>
-                <viewController id="czP-h1-jUB" customClass="PalInfoViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="czP-h1-jUB" customClass="PalInfoViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WAx-Cz-RpX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,7 +214,7 @@
         <!--Event Info View Controller-->
         <scene sceneID="Mzl-AL-qZs">
             <objects>
-                <viewController id="OqK-yk-NjN" customClass="EventInfoViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OqK-yk-NjN" customClass="EventInfoViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Leb-uE-dIi" customClass="EventIn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +229,7 @@
         <!--ActivityList-->
         <scene sceneID="cTs-tq-9Bc">
             <objects>
-                <viewController title="ActivityList" id="kxq-4n-moT" customClass="PalListViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ActivityList" id="kxq-4n-moT" customClass="PalListViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Og-eY-WGS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,7 +292,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="Zm3-Km-oSv">
             <objects>
-                <viewController id="3UE-1f-ahu" customClass="SignUpViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3UE-1f-ahu" customClass="SignUpViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EAz-bM-UJw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +311,7 @@
         <!--Sign Up Photo View Controller-->
         <scene sceneID="6wH-57-bBX">
             <objects>
-                <viewController id="muN-tf-oaC" customClass="SignUpPhotoViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="muN-tf-oaC" customClass="SignUpPhotoViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AaY-L4-wGb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +330,7 @@
         <!--Sign Up Bio View Controller-->
         <scene sceneID="DPX-Rl-NmE">
             <objects>
-                <viewController id="bq8-mp-I63" customClass="SignUpBioViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bq8-mp-I63" customClass="SignUpBioViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dco-C3-c4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,7 +388,7 @@
         <scene sceneID="tCp-k7-5mU">
             <objects>
                 <navigationController title="ActivityNavigation" automaticallyAdjustsScrollViewInsets="NO" id="khB-Pm-TeU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="clock" image="clock" catalog="system" id="1nh-Sc-mCT">
+                    <tabBarItem key="tabBarItem" title="Activities" image="clock" catalog="system" id="1nh-Sc-mCT">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="1" vertical="1"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -407,7 +408,7 @@
         <!--Initial View Controller-->
         <scene sceneID="jl9-oO-QuV">
             <objects>
-                <viewController storyboardIdentifier="InitialVC" id="79s-Tz-aIE" customClass="InitialViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialVC" id="79s-Tz-aIE" customClass="InitialViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zYS-GD-8wJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,7 +428,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="zhW-nU-KKC">
             <objects>
-                <viewController id="CDY-yV-AMC" customClass="SignInViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CDY-yV-AMC" customClass="SignInViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ivf-a1-BRH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -447,7 +448,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="AaF-Kc-c70">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cTR-M4-QfV" customClass="TabBarController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cTR-M4-QfV" customClass="TabBarController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="u3J-Zf-oRa"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rLd-7b-FkE">
@@ -486,7 +487,7 @@
         <!--Attendees List View Controller-->
         <scene sceneID="SB2-87-PO1">
             <objects>
-                <viewController id="Aw3-N4-WLj" customClass="AttendeesListViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Aw3-N4-WLj" customClass="AttendeesListViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rjm-7m-8Rs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -552,7 +553,7 @@
         <!--User Info View Controller-->
         <scene sceneID="jPT-Wq-x4p">
             <objects>
-                <viewController id="YqS-Ie-Nxp" customClass="UserInfoViewController" customModule="palsup_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YqS-Ie-Nxp" customClass="UserInfoViewController" customModule="Palsup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zYo-yF-mlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

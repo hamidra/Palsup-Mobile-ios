@@ -10,6 +10,7 @@ import UIKit
 import Promises
 import Kingfisher
 
+
 class EventListItem {
   var event : Event
   var notifications : NotificationInfo? = nil
@@ -22,6 +23,12 @@ class EventListItem {
 
 class EventListViewController: UIViewController {
   @IBOutlet weak var eventsTableView: UITableView!
+  
+  lazy var emptyPageView: EmptyPageView = {
+    var text = "You currently have no events to show. Go serach for your favorite activies and we will show you here when you are joined to any events"
+    var view = EmptyPageView(text: text, redirectButtonTitle: "Discover activities", redirectAction: redirectToDiscover)
+    return view
+  }()
   
   var eventList: [EventListItem] = [] {
     didSet {
@@ -145,18 +152,42 @@ class EventListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     /*eventsTableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)*/
+    setupView()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     if let uid = SignedInUser.Identity?.id {
       fetchEventsForUser(userId: uid).then({events in
-        self.eventList = events
+        if events.count > 0 {
+          self.eventList = events
+          self.eventsTableView.isHidden = false
+          self.emptyPageView.isHidden = true
+        } else {
+          self.eventsTableView.isHidden = true
+          self.emptyPageView.isHidden = false
+        }
       })
     } else {
       //ToDO: redirect to signIn page
       print("No user is logged in")
     }
+  }
+  
+  func setupView() {
+    emptyPageView.isHidden = true
+    self.view.addSubview(emptyPageView)
+    setupLayout()
+  }
+  
+  func setupLayout() {
+    emptyPageView.snp.makeConstraints({ make in
+      make.edges.equalTo(self.view)
+    })
+  }
+  
+  @objc func redirectToDiscover(){
+    self.tabBarController?.selectedIndex = 1
   }
 }
 

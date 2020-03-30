@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+      
+      // Override point for customization after application launch.
       UIButton.appearance().layer.borderWidth = 10
       
       // Use Firebase library to configure APIs
@@ -27,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       LocationManager.current.start()
       PushNotificationProvider.current.registerForPushNotifications()
       
-      /*// Check if launched from notification
+      // Check if launched from notification
       let notificationOption = launchOptions?[.remoteNotification]
 
       // 1
@@ -35,7 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let aps = notification["aps"] as? [String: AnyObject] {
         
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 1
-      }*/
+      } else {
+        (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+      }
+      
       SignedInUser.fetchNotifications();
       GqlClient.shared.clearCache();
       return true

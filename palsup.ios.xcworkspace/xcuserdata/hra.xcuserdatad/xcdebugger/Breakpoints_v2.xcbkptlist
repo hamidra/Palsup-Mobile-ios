@@ -7,88 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5E611233-94C9-430B-BCA2-917367D3C7EB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/SearchResultViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CD206C24-A031-4884-8F2A-48CA2B43735A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/SearchResultViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FF44CE84-F334-4EA3-817E-86B6DD568E7A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/SearchResultViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FF44CE84-F334-4EA3-817E-86B6DD568E7A - 546b03e263d19b61"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "palsup_ios.SearchResultViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "palsup.ios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "6280">
-               </Location>
-               <Location
-                  uuid = "FF44CE84-F334-4EA3-817E-86B6DD568E7A - 59962275e922d553"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Swift.Array&lt;palsup_ios.Event&gt;) -&gt; () in palsup_ios.SearchResultViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "palsup.ios"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "87"
-                  endingLineNumber = "87"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1A7B344D-90DC-45FD-90CD-C0898F790791"
-            shouldBeEnabled = "Yes"
+            uuid = "26217805-D002-4244-B891-83B66EAC6FA8"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "palsup.ios/Controllers/SearchResultViewController.swift"
@@ -100,12 +20,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "1A7B344D-90DC-45FD-90CD-C0898F790791 - 546b03e263d19b61"
-                  shouldBeEnabled = "Yes"
+                  uuid = "26217805-D002-4244-B891-83B66EAC6FA8 - c4e0b25d9e6bb70"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "palsup_ios.SearchResultViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "palsup.ios"
+                  symbolName = "Palsup.SearchResultViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Palsup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -115,12 +35,12 @@
                   offsetFromSymbolStart = "6028">
                </Location>
                <Location
-                  uuid = "1A7B344D-90DC-45FD-90CD-C0898F790791 - 51b1258379f0b07f"
-                  shouldBeEnabled = "Yes"
+                  uuid = "26217805-D002-4244-B891-83B66EAC6FA8 - 6e849da8eb3540"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Array&lt;palsup_ios.Pal&gt;) -&gt; () in palsup_ios.SearchResultViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "palsup.ios"
+                  symbolName = "closure #2 (Swift.Array&lt;Palsup.Pal&gt;) -&gt; () in Palsup.SearchResultViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Palsup"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -135,32 +55,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "492811DB-0E37-4D19-8108-CAA8BE564EE2"
+            uuid = "3754C500-7F26-40D2-BD9B-436E3C532F19"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Controllers/EditProfileViewController.swift"
+            filePath = "palsup.ios/Controllers/SearchResultViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "signout()"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3754C500-7F26-40D2-BD9B-436E3C532F19 - c4e0b25d9e6bb70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Palsup.SearchResultViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Palsup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "6280">
+               </Location>
+               <Location
+                  uuid = "3754C500-7F26-40D2-BD9B-436E3C532F19 - 428e210f05158e06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Array&lt;Palsup.Event&gt;) -&gt; () in Palsup.SearchResultViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "Palsup"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hra/Deepnosis/palsup.ios/palsup.ios/Controllers/SearchResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "932BF348-C438-4BF2-94F5-E133551ECEB5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palsup.ios/Controllers/PalListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB888CEB-A23E-456F-9BF8-ACB0BD80E407"
+            uuid = "C3411D63-D62A-4870-8E01-86D4E89ADB6E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "palsup.ios/Models/SignedInUser.swift"
+            filePath = "palsup.ios/Views/UserDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "signOut()"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "configure(with:exitAction:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

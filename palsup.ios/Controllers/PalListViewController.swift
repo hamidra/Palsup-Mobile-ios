@@ -23,6 +23,12 @@ class PalListViewController: UIViewController {
 
   @IBOutlet weak var palsTableView: UITableView!
   
+  lazy var emptyPageView: EmptyPageView = {
+    var text = "You currently have no search history. Go discover your favorite activies!"
+    var view = EmptyPageView(text: text, redirectButtonTitle: "Discover activities", redirectAction: redirectToDiscover)
+    return view
+  }()
+  
   var palList: [PalListItem] = [] {
     didSet {
       palsTableView.reloadData()
@@ -57,6 +63,7 @@ class PalListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupView()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -64,12 +71,35 @@ class PalListViewController: UIViewController {
     if let uid = SignedInUser.Identity?.id {
       fetchPalsForUser(userId: uid).then({pals in
         self.palList = pals
+        if pals.count > 0 {
+          self.palsTableView.isHidden = false
+          self.emptyPageView.isHidden = true
+        } else {
+          self.palsTableView.isHidden = true
+          self.emptyPageView.isHidden = false
+        }
       })
     }
     else {
       //ToDO: redirect to signIn page
       print("No user is logged in")
     }
+  }
+  
+  func setupView() {
+    emptyPageView.isHidden = true
+    self.view.addSubview(emptyPageView)
+    setupLayout()
+  }
+  
+  func setupLayout() {
+    emptyPageView.snp.makeConstraints({ make in
+      make.edges.equalTo(self.view)
+    })
+  }
+  
+  @objc func redirectToDiscover(){
+    self.tabBarController?.selectedIndex = 1
   }
 }
 
