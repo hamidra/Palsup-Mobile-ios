@@ -12,6 +12,9 @@ import SnapKit
 
 class EventDetailView: UIView {
 
+  var event: Event?
+  var exitAction: (()->Void)?
+  
   lazy var membersAvatarBar: AvatarBarView = {
     let avatarBar = AvatarBarView()
     return avatarBar
@@ -51,9 +54,6 @@ class EventDetailView: UIView {
     stack.axis = .vertical
     return stack
   }()
-  
-  var event: Event?
-  var exitAction: (()->Void)?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -101,7 +101,7 @@ class EventDetailView: UIView {
     membersAvatarBar.snp.makeConstraints{ (make) -> Void in
       make.top.equalTo(eventImage.snp.top).offset(20)
       make.left.equalTo(eventImage.snp.left).offset(20)
-      make.width.equalTo(40)
+      make.height.equalTo(40)
     }
   }
   
@@ -141,8 +141,10 @@ class EventDetailView: UIView {
       if let topMembers = event.group?.getTopMembers(topN: 5), topMembers.count > 0 {
         membersAvatarBar.configure(users: topMembers, tapAction: nil)
       }
+      
       // set event description
-      self.descriptionTextView.text = "Entrepreneur and businessman Bill Gates and his business partner Paul Allen founded and built the world's largest software business, Microsoft, through technological innovation, keen business strategy and aggressive business tactics. In the process, Gates became one of the richest men in the world. In February 2014, Gates announced that he was stepping down as Microsoft's chairman to focus on charitable work at his foundation, the Bill and Melinda Gates Foundation."
+      self.descriptionTextView.text = event.description
+      
     }
     //set exit action
     self.exitAction = exitAction

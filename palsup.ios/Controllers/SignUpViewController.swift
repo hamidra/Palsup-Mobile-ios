@@ -56,17 +56,27 @@ class SignUpViewController: FormViewController {
         $0.header?.height = {100}
       }
       <<< TextRow("firstName"){ row in
-        row.title = "First Name"
-      }
+        row.title = "First Name*"
+        row.add(rule: RuleRequired())
+        row.validationOptions = .validatesOnBlur
+      }.onRowValidationChanged(validationMsgHandler)
       <<< TextRow("lastName"){ row in
-        row.title = "Last Name"
-      }
+        row.title = "Last Name*"
+        row.add(rule: RuleRequired())
+        row.validationOptions = .validatesOnBlur
+      }.onRowValidationChanged(validationMsgHandler)
       <<< EmailRow("email"){ row in
-        row.title = "Email"
-      }
+        row.title = "Email*"
+        row.add(rule: RuleRequired())
+        row.add(rule: RuleEmail())
+        row.validationOptions = .validatesOnBlur
+      }.onRowValidationChanged(validationMsgHandler)
       <<< PasswordRow("password"){ row in
-        row.title = "Password"
-      }
+        row.title = "Password*"
+        row.add(rule: RuleRequired())
+        row.add(rule: RuleMinLength(minLength: 8, msg: "Password should be 8 character or more"))
+        row.validationOptions = .validatesOnBlur
+      }.onRowValidationChanged(validationMsgHandler)
       <<< DateRow("birthday"){ row in
         row.title = "Birthday"
         row.value = Date() - 18.years
@@ -79,12 +89,33 @@ class SignUpViewController: FormViewController {
         <<< ButtonRow() { row in
           row.title = "Reset"
           row.onCellSelection() {cell, row in
-            self.form.setValues(["firstName": "", "lastName": "", "email": "", "password": "", "birthday": ""])
+            self.form.setValues(["firstName": "", "lastName": "", "email": "", "password": "", "birthday": Date() - 18.years])
             self.tableView.reloadData()
           }
         }
     animateScroll = true
     rowKeyboardSpacing = 20
+  }
+}
+extension FormViewController {
+  func validationMsgHandler(cell: BaseCell , row: BaseRow) {
+    let rowIndex = row.indexPath!.row
+    while row.section!.count > rowIndex + 1 && row.section?[rowIndex  + 1] is LabelRow {
+        row.section?.remove(at: rowIndex + 1)
+    }
+    if !row.isValid {
+      for (index, validationMsg) in row.validationErrors.map({ $0.msg }).enumerated() {
+        let labelRow = LabelRow() {
+          $0.title = validationMsg
+          $0.cell.height = { 32 }
+          $0.cell.textLabel?.font = .italicSystemFont(ofSize: 18.0)
+        }.cellUpdate { cell, row in
+          cell.textLabel?.textColor = .red
+        }
+        let indexPath = row.indexPath!.row + index + 1
+        row.section?.insert(labelRow, at: indexPath)
+      }
+    }
   }
 }
 

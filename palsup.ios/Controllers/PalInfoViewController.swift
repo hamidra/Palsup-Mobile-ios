@@ -11,7 +11,7 @@ import SnapKit
 
 class PalInfoViewController: UIViewController {
 
-  var pal: Pal?
+  var palsForUser: PalsGroupedByUser?
   
   lazy var userDetailView: UserDetailView = {
     return UserDetailView()
@@ -39,7 +39,7 @@ class PalInfoViewController: UIViewController {
   }
   
   func setupView(){
-    userDetailView.configure(with: pal?.user, exitAction: dismissVC)
+    userDetailView.configure(with: palsForUser?.user, exitAction: dismissVC)
     self.view.addSubview(scrollView)
     self.view.addSubview(actionToolbar)
     setupLayout()
@@ -77,20 +77,14 @@ class PalInfoViewController: UIViewController {
   }
   
   func acceptAction() {
-    if let pal=self.pal, let palId = pal.id, let currentPal=SignedInUser.currentPal {
-      let addToPalsInterestedMutation = AddToPalsInterestedMutation(palId: palId, interestedPalId: currentPal.id)
-      GqlClient.shared.client.perform(mutation: addToPalsInterestedMutation) {
-        result in
-        switch result {
-        case .success(let gqlResult):
-          if gqlResult.data?.addToPalsInterested == nil {
-            print("could not find the pal")
-          }
-        case .failure(let error):
-          print(error)
+    if let pal=self.palsForUser?.pals?.first, let palId = pal?.id, let currentPal = SignedInUser.currentPal {
+      GqlApiProvider.addToPalsInterested(palId: palId, interestedPalId: currentPal.id).then({ palId in
+        if palId == nil {
+          print("could not find the pal")
         }
-        
-      }
+      }).catch({error in
+        print("error \(error)")
+      })
     }
     self.dismissVC()
   }

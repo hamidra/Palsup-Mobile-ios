@@ -32,7 +32,8 @@ class SearchResultViewController: UIViewController {
       eventsCollectionView.reloadData()
     }
   }
-  var palsByActivity:[Pal]? {
+  
+  var palsByActivity:[PalsGroupedByUser]? {
     didSet {
       palsCollectionView.reloadData()
     }
@@ -78,12 +79,12 @@ class SearchResultViewController: UIViewController {
         let gqlActivityFilter = ActivityFilterInput(activity: activity, date: dateRangeInput, location: locationInput)
         
         // Query Pals by Activity
-        getPalsByActivity(userId: userId, activityFilter: gqlActivityFilter).then({ pals in
+        GqlApiProvider.getPalsByActivityGroupedByUser(userId: userId, activityFilter: gqlActivityFilter).then({ pals in
           self.palsByActivity = pals
         })
         
         // Query Events by Activity
-        getEventsByActivity(userId: userId, activityFilter: gqlActivityFilter).then({ events in
+        GqlApiProvider.getEventsByActivity(userId: userId, activityFilter: gqlActivityFilter).then({ events in
           self.eventsByActivity = events
         })
         
@@ -96,8 +97,8 @@ class SearchResultViewController: UIViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showUserDetail" {
-      if let vc = segue.destination as? PalInfoViewController, let pal = sender as? Pal {
-        vc.pal = pal
+      if let vc = segue.destination as? PalInfoViewController, let palsForUser = sender as? PalsGroupedByUser {
+        vc.palsForUser = palsForUser
       }
       else
       {
@@ -114,9 +115,9 @@ class SearchResultViewController: UIViewController {
     }
   }
   
-  func palCellTapAction(oPal: Pal?){
-    if let pal = oPal {
-      performSegue(withIdentifier: "showUserDetail", sender: pal)
+  func palCellTapAction(palsForUser: PalsGroupedByUser?){
+    if let palsForUser = palsForUser {
+      performSegue(withIdentifier: "showUserDetail", sender: palsForUser)
     }
   }
   
@@ -139,7 +140,7 @@ extension SearchResultViewController : UICollectionViewDataSource, UICollectionV
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if collectionView == palsCollectionView {
       let palCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PalCollectionViewCell", for: indexPath) as! PalCollectionViewCell
-      palCell.configure(with: palsByActivity?[indexPath.item], tapAction:palCellTapAction)
+      palCell.configure(with: palsByActivity?[indexPath.item], tapAction: palCellTapAction)
       return palCell
     } else {
       let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
@@ -149,72 +150,3 @@ extension SearchResultViewController : UICollectionViewDataSource, UICollectionV
   }
 }
 
-extension SearchResultViewController {
-  func getPalsByActivity(userId: String, activityFilter: ActivityFilterInput) -> Promise<[Pal]> {
-    let decoder = JSONDecoder()
-    return Promise<[Pal]> { fulfill, reject in
-      var items: [Pal] = []
-      let gqlGetPalsByActivityQuery = GetPalsByActivityQuery(userId: userId, activityFilter: activityFilter)
-      GqlClient.shared.client.fetch(query: gqlGetPalsByActivityQuery) { result in
-        switch result {
-        case .success(let gqlResult):
-          if let pals = gqlResult.data?.getPalsByActivity {
-            items = pals.compactMap({ item in
-              if let palItem = item {
-                do {
-                  let palData = try JSONSerialization.data(withJSONObject: palItem.jsonObject, options: [])
-                  let pal =  try decoder.decode(Pal.self, from: palData )
-                  return pal
-                } catch {
-                  print("Error happened in deserialization of palItem\(palItem), error:\(error)")
-                  return nil
-                }
-              } else {
-                return nil
-              }
-            })
-          } else {
-            print("getPalsByActivity returned no data")
-          }
-          return fulfill(items)
-        case .failure(let error):
-          print(error)
-        }
-      }
-    }
-  }
-  
-  func getEventsByActivity(userId: String, activityFilter: ActivityFilterInput) -> Promise<[Event]> {
-    let decoder = JSONDecoder()
-    return Promise<[Event]> { fulfill, reject in
-      var items: [Event] = []
-      let gqlGetEventsByActivityQuery = GetEventsByActivityQuery(userId: userId, activityFilter: activityFilter)
-      GqlClient.shared.client.fetch(query: gqlGetEventsByActivityQuery) { result in
-        switch result {
-        case .success(let gqlResult):
-          if let events = gqlResult.data?.getEventsByActivity {
-            items = events.compactMap({ item in
-              if let eventItem = item {
-                do {
-                  let eventData = try JSONSerialization.data(withJSONObject: eventItem.jsonObject, options: [])
-                  let event =  try decoder.decode(Event.self, from: eventData )
-                  return event
-                } catch {
-                  print("Error happened in deserialization of eventItem\(eventItem), error:\(error)")
-                  return nil
-                }
-              } else {
-                return nil
-              }
-            })
-          } else {
-            print("getEventsByActivity returned no data")
-          }
-          return fulfill(items)
-        case .failure(let error):
-          print(error)
-        }
-      }
-    }
-  }
-}

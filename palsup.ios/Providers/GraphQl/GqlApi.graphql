@@ -210,6 +210,32 @@ query getPalsByActivity($userId: ID, $activityFilter: ActivityFilterInput){
   }
 }
 
+query getPalsByActivityGroupedByUser($userId: ID, $activityFilter: ActivityFilterInput){
+  getPalsByActivityGroupedByUser(userId:$userId, activityFilter:$activityFilter) {
+    user {
+      id
+      name {
+        ...nameFields
+      }
+      work {
+        ...workFields
+      }
+      education {
+        ...educationFields
+      }
+      bio
+      absolutePicture {
+        ...pictureFields
+      }
+    }
+    pals {
+      id
+      activity
+      score
+    }
+  }
+}
+
 query getPalsForUserSortedByDate($userId: ID!, $excludeIds:[ID]){
   getPalsForUserSortedByDate(userId:$userId, excludeIds:$excludeIds) {
     id

@@ -13,8 +13,8 @@ import SnapKit
 
 class PalCollectionViewCell: CardCollectionViewCell {
   
-  var pal:Pal?
-  var tapAction:((Pal?)->Void)?
+  var palsForUser:PalsGroupedByUser?
+  var tapAction:((PalsGroupedByUser?)->Void)?
   
   lazy var nameLabel: UILabel = {
     let label = UILabel()
@@ -56,6 +56,7 @@ class PalCollectionViewCell: CardCollectionViewCell {
     button.setTitle("🤙", for: .normal)
     button.backgroundColor = UIColor.systemRed
     button.showsTouchWhenHighlighted = true
+    button.addTarget(self, action: #selector(likeAction), for:.touchUpInside )
     return button
   }()
   
@@ -96,21 +97,34 @@ class PalCollectionViewCell: CardCollectionViewCell {
   }
   
   @objc func handleTap(sender: UITapGestureRecognizer) {
-    if let action = self.tapAction, let pal = self.pal {
+    if let action = self.tapAction, let pal = self.palsForUser {
       action(pal)
     }
   }
   
-  func configure(with oPal: Pal?, tapAction action: ((Pal?)->Void)?) {
-    if let pal = oPal {
-      self.pal = pal
+  @objc func likeAction() {
+    if let pal=self.palsForUser?.pals?.first, let palId = pal?.id, let currentPal = SignedInUser.currentPal {
+      GqlApiProvider.addToPalsInterested(palId: palId, interestedPalId: currentPal.id).then({ palId in
+        if palId == nil {
+          print("could not find the pal")
+        }
+      }).catch({error in
+        print("error \(error)")
+      })
+    }
+    self.isHidden = true
+  }
+  
+  func configure(with palsForUser: PalsGroupedByUser?, tapAction action: ((PalsGroupedByUser?)->Void)?) {
+    if let palsForUser = palsForUser {
+      self.palsForUser = palsForUser
       // set name label
-      if let firstname = pal.user?.name?.first {
+      if let firstname = palsForUser.user?.name?.first {
         self.nameLabel.text = "\(firstname.capitalized)'s down for"
       }
       
       // set pal image
-      if let pictureUrl = pal.user?.absolutePicture?.medium {
+      if let pictureUrl = palsForUser.user?.absolutePicture?.medium {
         let url = URL(string: pictureUrl)
         let downloader = KingfisherManager.shared.downloader
         
@@ -131,10 +145,10 @@ class PalCollectionViewCell: CardCollectionViewCell {
       }
       
       // set activity label
-      self.activityLabel.text = pal.activity?.capitalized
+      self.activityLabel.text = palsForUser.pals?.first??.activity?.capitalized
       
       // set date label
-      if let date = pal.date {
+      if let date = palsForUser.pals?.first??.date {
         let dateRange = DateRange(start:Int(date.startDate ?? "NIL"), end:Int(date.endDate ?? "NIL"))
         self.dateLabel.text =  (dateRange.displayDateFromNow() ?? "").capitalized
       } else {

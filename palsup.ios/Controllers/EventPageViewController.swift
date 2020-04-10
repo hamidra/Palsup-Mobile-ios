@@ -61,28 +61,6 @@ class EventPageViewController: UIViewController {
     }
   }
   
-  func memberTapAction() {
-    performSegue(withIdentifier: "toMembers", sender: self.event)
-  }
-  
-  func waitlistTapAction() {
-    performSegue(withIdentifier: "toWaitlist", sender: self.event)
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toMembers" {
-      if let vc = segue.destination as? AttendeesListViewController, let event = sender as? Event {
-        vc.event = event
-        vc.isWaitlist = false
-      }
-    } else if segue.identifier == "toWaitlist" {
-       if let vc = segue.destination as? AttendeesListViewController, let event = sender as? Event {
-        vc.event = event
-        vc.isWaitlist = true
-      }
-    }
-  }
-  
   func setupView() {
     eventHeader.configure(oEvent: event, memberAction: memberTapAction, waitlistAction: waitlistTapAction)
     self.navigationItem.rightBarButtonItem = editEventBarButton
@@ -106,13 +84,34 @@ class EventPageViewController: UIViewController {
       make.width.equalTo(self.view)
       //make.height.equalTo(300)
     })
-    
-  conversationViewController.view.translatesAutoresizingMaskIntoConstraints = false
+    conversationViewController.view.translatesAutoresizingMaskIntoConstraints = false
     conversationViewController.view.snp.makeConstraints({make in
       make.top.equalTo(eventHeader.snp.bottom)
       make.width.equalTo(self.view)
       make.bottom.equalTo(self.view)
     })
+  }
+  
+  func memberTapAction() {
+    performSegue(withIdentifier: "toMembers", sender: self.event)
+  }
+  
+  func waitlistTapAction() {
+    performSegue(withIdentifier: "toWaitlist", sender: self.event)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toMembers" {
+      if let vc = segue.destination as? AttendeesListViewController, let event = sender as? Event {
+        vc.event = event
+        vc.isWaitlist = false
+      }
+    } else if segue.identifier == "toWaitlist" {
+       if let vc = segue.destination as? AttendeesListViewController, let event = sender as? Event {
+        vc.event = event
+        vc.isWaitlist = true
+      }
+    }
   }
   
   @objc func toEditEvent() {

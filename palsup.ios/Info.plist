@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -27,14 +27,14 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This app requests to take pictures.</string>
+	<string>This app requests to access your camera so you can share pictures with your pals.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs to use location when you are using the app to match you with potential pals in your area</string>
+	<string>This app requests to use location when you are using the app to match you with potential pals in your area.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requests to access your photos.</string>
+	<string>This app requests to access your photos gallery so you can upload and share pictures with your pals.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

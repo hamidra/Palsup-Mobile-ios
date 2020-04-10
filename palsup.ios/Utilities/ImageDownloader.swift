@@ -35,4 +35,26 @@ class ImageDownloader {
       }
     }
   }
+  
+  public func retrieveImage(url: String) -> Promise<UIImage> {
+    return Promise<UIImage> { fulfill, reject in
+      if let src = URL(string: url) {
+        let downloader = KingfisherManager.shared.downloader
+        //Downloader needs to be configured to accept untrusted certificates
+        downloader.trustedHosts = Set(["localhost"])
+        KingfisherManager.shared.retrieveImage(with: src, options: [.downloader(downloader)]) {result in
+          switch result {
+          case .success(let value):
+            print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            fulfill(value.image)
+          case .failure(let error):
+            print("Job failed: \(error.localizedDescription)")
+            reject(error)
+          }
+        }
+      } else {
+        reject(GenericError("Resource is not a valid url"))
+      }
+    }
+  }
 }

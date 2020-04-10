@@ -123,6 +123,10 @@ extension PalListViewController : UITableViewDataSource, UITableViewDelegate {
       palListTableViewCell.detailTextLabel?.text = "Anytime"
     }
     
+    // reset accessory
+    palListTableViewCell.accessoryView = nil
+    palListTableViewCell.accessoryType = .disclosureIndicator
+    
     // set notification badges
     if let notifications = palList[indexPath.row].notifications {
       var isNew = notifications.new ?? false
@@ -132,8 +136,6 @@ extension PalListViewController : UITableViewDataSource, UITableViewDelegate {
         notificationBadges.count = count - (isNew ? 1 : 0)
         notificationBadges.isNew = isNew
         palListTableViewCell.accessoryView = notificationBadges
-      } else {
-        palListTableViewCell.accessoryType = .disclosureIndicator
       }
     }
     
@@ -142,6 +144,9 @@ extension PalListViewController : UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("did select row at \(indexPath)")
+    if let userId = SignedInUser.Identity?.id, let palId = self.palList[indexPath.row].pal.id {
+      GqlApiProvider.markPalNotificationsAsRead(userId: userId, palId: palId)
+    }
     palCellTapAction(oPal: self.palList[indexPath.row].pal)
   }
 }

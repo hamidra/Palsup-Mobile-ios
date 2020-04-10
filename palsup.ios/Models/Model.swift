@@ -15,12 +15,18 @@ struct Pal: Codable {
   var location: Location? = nil
   var date: DateRangeEntity? = nil
   var interested: [String?]? = nil
+  var score: Float? = nil
   
   static func decode(_ json: Data) -> Pal? {
     let decoder = JSONDecoder()
     let pal = try? decoder.decode(Pal.self, from: json)
     return pal
   }
+}
+
+struct PalsGroupedByUser: Codable {
+  var user: User? = nil
+  var pals: [Pal?]? = []
 }
 
 struct Event: Codable {

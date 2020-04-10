@@ -9,6 +9,7 @@
 import UIKit
 import Promises
 import Kingfisher
+import os
 
 
 class EventListItem {
@@ -25,7 +26,7 @@ class EventListViewController: UIViewController {
   @IBOutlet weak var eventsTableView: UITableView!
   
   lazy var emptyPageView: EmptyPageView = {
-    var text = "You currently have no events to show. Go serach for your favorite activies and we will show you here when you are joined to any events"
+    var text = "You currently have no events to show. Go search for your favorite activies. We will show you here any events that you are joind to."
     var view = EmptyPageView(text: text, redirectButtonTitle: "Discover activities", redirectAction: redirectToDiscover)
     return view
   }()
@@ -226,6 +227,7 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
           result in
           switch result {
           case .success(let value):
+            os_log("Task done for)")
             print("Task done for: \(value.source.url?.absoluteString ?? "")")
           case .failure(let error):
             print("Job failed: \(error.localizedDescription)")
@@ -234,6 +236,11 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
       }
       imageView.frame = CGRect(x: 0,y: 0,width: 60,height: 60);
     }
+    
+    // reset accessory
+    eventListTableViewCell.accessoryView = nil
+    eventListTableViewCell.accessoryType = .disclosureIndicator
+    
     if let notifications = eventList[indexPath.row].notifications {
       var isNew = notifications.new ?? false
       var count = notifications.totalCount ?? 0
@@ -242,15 +249,17 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
         notificationBadges.count = count - (isNew ? 1 : 0)
         notificationBadges.isNew = isNew
         eventListTableViewCell.accessoryView = notificationBadges
-      } else {
-        eventListTableViewCell.accessoryType = .disclosureIndicator
       }
     }
+    
     return eventListTableViewCell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("did select row at \(indexPath)")
+    if let userId = SignedInUser.Identity?.id, let eventId = self.eventList[indexPath.row].event.id {
+      GqlApiProvider.markEventNotificationsAsRead(userId: userId, eventId: eventId)
+    }
     eventCellTapAction(oEvent: self.eventList[indexPath.row].event)
   }
   

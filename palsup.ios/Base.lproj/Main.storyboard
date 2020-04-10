@@ -123,7 +123,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-nS-FlQ" userLabel="Pal Collection View">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ge6-nS-FlQ" userLabel="Pal Collection View">
                                 <rect key="frame" x="0.0" y="158" width="414" height="704"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sLv-LV-ytl">
@@ -138,7 +138,7 @@
                                     <outlet property="delegate" destination="W39-fZ-43z" id="1bN-Ej-zdN"/>
                                 </connections>
                             </collectionView>
-                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-uB-9Mu" userLabel="Event Collection View">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-uB-9Mu" userLabel="Event Collection View">
                                 <rect key="frame" x="0.0" y="158" width="414" height="704"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aFv-bE-SGs">
@@ -578,6 +578,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="voi-sa-Lpd"/>
         <segue reference="TFj-R2-dsk"/>
-        <segue reference="oXZ-e2-yA6"/>
+        <segue reference="t2i-zm-ugJ"/>
     </inferredMetricsTieBreakers>
 </document>

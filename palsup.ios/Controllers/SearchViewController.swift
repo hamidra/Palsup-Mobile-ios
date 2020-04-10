@@ -115,9 +115,12 @@ class SearchViewController: UIViewController {
     self.view.addSubview(scrollView)
     setupLayout()
     
-    // add tap genture recognizer
+    // add genture recognizer
     let tapGenstureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleMainViewTap))
     self.view.addGestureRecognizer(tapGenstureRecognizer)
+    
+    let panGenstureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleMainViewTap))
+    self.view.addGestureRecognizer(panGenstureRecognizer)
     
     // add observers to move the view up if the keyboard is shown
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

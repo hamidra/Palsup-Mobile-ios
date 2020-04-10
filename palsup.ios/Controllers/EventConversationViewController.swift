@@ -13,14 +13,15 @@ import SwiftDate
 import Promises
 
 class EventMessage : MessageKit.MessageType {
-  init(message: GetEventConversationQuery.Data.GetEventConversation.Group.Conversation?) {
-    let sender = Sender(id: message?.from?.id ?? "N/A", displayName: message?.from?.name.fragments.nameFields.first ?? "N/A")
+  init(message: Message?) {
+    let sender = Sender(id: message?.from?.id ?? "N/A", displayName: message?.from?.name?.first ?? "N/A")
     self.sender = sender
     /*ToDO: add date to API return values and use the actual date from server Date(milliseconds: Int(message?.date)*/
-    self.sentDate = Date()
+    self.sentDate = Date.dateFromBson(bsonDate: message?.content?.timestamp) ?? Date()
     self.kind = .text(message?.content?.text ?? " ")
     self.messageId = message?.id ?? UUID().uuidString
     self.status = DeliveryStatus.recieved
+    self.from = message?.from
   }
   
   init (sender:SenderType, messageId:String, date:Date, kind:MessageKind, status:DeliveryStatus) {
@@ -36,6 +37,7 @@ class EventMessage : MessageKit.MessageType {
   var sentDate: Date
   var kind: MessageKind
   var status:DeliveryStatus
+  var from: User?
   
   enum DeliveryStatus {
     case recieved
@@ -82,18 +84,11 @@ class EventConversationViewController: MessagesViewController {
     super.viewDidAppear(animated)
     // fetch event conversations
     if let eventId = event?.id {
-      let gqlGetEventConversationQuery = GetEventConversationQuery(eventId: eventId)
-      GqlClient.shared.client.fetch(query: gqlGetEventConversationQuery) { 
-        result in
-        switch result {
-        case .success(let gqlResult):
-          if let messages = gqlResult.data?.getEventConversation?.group.conversation {
-            let eventMessages : [EventMessage] = messages.map({EventMessage(message: $0)})
-            self.messages = eventMessages
-          }
-        case .failure(let error):
-          print(error)
-        }
+      GqlApiProvider.getEventConversation(eventId: eventId).then { messages in
+        let eventMessages : [EventMessage] = messages.map({EventMessage(message: $0)})
+        self.messages = eventMessages
+      }.catch { error in
+        print(error)
       }
     }
     NotificationCenter.default.addObserver(self, selector: #selector(handleNewMessage), name: APNSNotification.notificationNewMessage, object: nil)
@@ -142,14 +137,8 @@ class EventConversationViewController: MessagesViewController {
   
   @objc
   func handleNewMessage(notification: NSNotification) {
-    if let messageInfo = notification.userInfo?[ApnsFieldNames.message] as? Message, let senderId = messageInfo.from?.id, let senderName = messageInfo.from?.name?.first {
-      var sender = Sender(id: senderId, displayName: senderName)
-      var messageId = messageInfo.id ?? UUID().uuidString
-      /*ToDO: add date to API return values and use the actual date from server Date(milliseconds: Int(message?.date)*/
-      var sentDate = Date()
-      var kind: MessageKind = .text(messageInfo.content?.text ?? " ")
-      var status = EventMessage.DeliveryStatus.recieved
-      var message = EventMessage(sender:sender, messageId:messageId, date:sentDate, kind:kind, status:status)
+    if let messageInfo = notification.userInfo?[ApnsFieldNames.message] as? Message {
+      let message = EventMessage(message: messageInfo)
       self.messages.append(message)
       self.messagesCollectionView.reloadDataAndKeepOffset()
     }
@@ -205,7 +194,7 @@ extension EventConversationViewController: MessagesDataSource {
   
   func messageTopLabelAttributedText(for message: MessageKit.MessageType, at indexPath: IndexPath) -> NSAttributedString? {
     if !isPreviousMessageSameSender(at: indexPath) {
-      let name = message.sender.displayName
+      let name = message.sender.displayName.capitalized
       return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
     }
     return nil
@@ -422,9 +411,19 @@ extension EventConversationViewController: MessagesDisplayDelegate {
   }
   
   func configureAvatarView(_ avatarView: AvatarView, for message: MessageKit.MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-    if !isNextMessageSameSender(at: indexPath) {
-      let avatar = Avatar(image: UIImage(named: "46"), initials: "HA")
+    if !isNextMessageSameSender(at: indexPath), currentSender().senderId != message.sender.senderId, let message = message as? EventMessage {
+      let avatar = Avatar(initials: message.sender.displayName.first?.uppercased() ?? "?")
       avatarView.set(avatar: avatar)
+      avatarView.isHidden = false
+      
+      //download profiel image
+      if let imageUrl = message.from?.absolutePicture?.thumbnail {
+        ImageDownloader.shared.retrieveImage(url: imageUrl).then { image in
+          avatarView.image = image
+        }.catch { error in
+          print(error)
+        }
+      }
     } else {
       avatarView.isHidden = true
     }

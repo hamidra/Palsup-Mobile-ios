@@ -16,6 +16,16 @@ enum DateLiteral:Int {
   case weekend = 3
 }
 
+extension Date {
+  public static func dateFromBson(bsonDate:String?) -> Date? {
+    if let milliseconds = Int(bsonDate ?? "NIL") {
+      return Date(milliseconds: milliseconds)
+    } else {
+      return nil
+    }
+  }
+}
+
 class DateRange {
   var startDate:Date?
   var endDate:Date?
