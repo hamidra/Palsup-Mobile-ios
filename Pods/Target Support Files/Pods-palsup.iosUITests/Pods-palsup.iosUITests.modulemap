@@ -1,6 +1,0 @@
-framework module Pods_palsup_iosUITests {
-  umbrella header "Pods-palsup.iosUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
